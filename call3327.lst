@@ -617,7 +617,7 @@ Current file: call3327.s
 000D9D  1  D0 11                BNE CONT2
 000D9F  1               ;0D9F:20 14 16 124
 000D9F  1               NOTESC:
-000D9F  1  20 13 16             JSR KPEENG
+000D9F  1  20 14 16             JSR KPEENG
 000DA2  1               ;0DA2:2C 52 OD 125
 000DA2  1  2C 52 0D             BIT KEMODE      ;WHICH MODE?(K OR E)
 000DA5  1               ;0DA5:30 OD 126
@@ -628,7 +628,7 @@ Current file: call3327.s
 000DA9  1               ;ODA9:DO 05 128
 000DA9  1  D0 05                BNE CONT2
 000DAB  1               ;ODAB:20 C2 11 129
-000DAB  1  20 C1 11             JSR HCLREOL
+000DAB  1  20 C2 11             JSR HCLREOL
 000DAE  1               ;ODAE:A4 24 130
 000DAE  1               CONT3:
 000DAE  1  A4 24                LDY CH
@@ -653,7 +653,7 @@ Current file: call3327.s
 000DBB  1               ;ODBB:8D 52 OD 139
 000DBB  1  8D 52 0D             STA KEMODE      ;RESET TO E-MODE
 000DBE  1               ;ODBE:8D 52 12 140
-000DBE  1  8D 51 12             STA STATE
+000DBE  1  8D 52 12             STA STATE
 000DC1  1               ;0DC1:68 141
 000DC1  1  68                   PLA
 000DC2  1               ;ODC2:85 24 142
@@ -688,7 +688,7 @@ Current file: call3327.s
 000DDE  1               
 000DDE  1               ;ODDE:20 A5 11 156
 000DDE  1               ESC_:
-000DDE  1  20 A4 11             JSR HIHOME      ;THEN,HOME
+000DDE  1  20 A5 11             JSR HIHOME      ;THEN,HOME
 000DE1  1               ;0DE1:4C AE OD 157
 000DE1  1  4C AE 0D             JMP CONT3
 000DE4  1               ;ODE4:C9 C5 158
@@ -698,7 +698,7 @@ Current file: call3327.s
 000DE6  1  D0 06                BNE NESCE
 000DE8  1               ;0DE8:20 C2 11 160
 000DE8  1               ESCE:
-000DE8  1  20 C1 11             JSR HCLREOL     ;THEN,CLEAR END OF LINE
+000DE8  1  20 C2 11             JSR HCLREOL     ;THEN,CLEAR END OF LINE
 000DEB  1               ;ODEB:4C AE OD 161
 000DEB  1  4C AE 0D             JMP CONT3
 000DEE  1               ;ODEE:C9 C6 162
@@ -708,7 +708,7 @@ Current file: call3327.s
 000DF0  1  D0 06                BNE NESCF
 000DF2  1               ;0DF2:20 AF 11 164
 000DF2  1               ESCF:
-000DF2  1  20 AE 11             JSR HCLREOP     ;THEN,CLEAR END OF PAGE
+000DF2  1  20 AF 11             JSR HCLREOP     ;THEN,CLEAR END OF PAGE
 000DF5  1               ;0DF5:4C AE OD 165
 000DF5  1  4C AE 0D             JMP CONT3
 000DF8  1               ;0DF8:C9 C3 166
@@ -737,7 +737,7 @@ Current file: call3327.s
 000E0A  1               ;0E0A:90 A2 176
 000E0A  1  90 A2                BCC CONT3
 000E0C  1               ;0E0C:20 56 11 177
-000E0C  1  20 55 11             JSR HSCROL      ;THEN,HI-SCROL
+000E0C  1  20 56 11             JSR HSCROL      ;THEN,HI-SCROL
 000E0F  1               ;0E0F:4C AE OD 178
 000E0F  1  4C AE 0D             JMP CONT3
 000E12  1               
@@ -772,7 +772,7 @@ Current file: call3327.s
 000E2B  1               ;0E2B:90 03 193
 000E2B  1  90 03                BCC ECTRL
 000E2D  1               ;0E2D:4C 2A 11 194
-000E2D  1  4C 29 11             JMP NORMOUT
+000E2D  1  4C 2A 11             JMP NORMOUT
 000E30  1               ;0E30:09 1B 195
 000E30  1               ECTRL:
 000E30  1  C9 1B                CMP #$1B        ;IF ESC OR MORE?
@@ -806,7 +806,7 @@ Current file: call3327.s
 000E48  1               ;0E48:A9 20 209
 000E48  1  A9 20                LDA #$20        ;A BLANK!
 000E4A  1               ;0E4A:20 20 12 210
-000E4A  1  20 1F 12             JSR KOROUT      ;DISP!
+000E4A  1  20 20 12             JSR KOROUT      ;DISP!
 000E4D  1               ;0E4D:C6 24 211
 000E4D  1  C6 24                DEC CH
 000E4F  1               ;0E4F:60 212
@@ -818,26 +818,26 @@ Current file: call3327.s
 000E52  1               ;0E52:90 19 215
 000E52  1  90 19                BCC CHKCTRL
 000E54  1               ;0E54:4C 20 12 216
-000E54  1  4C 1F 12             JMP KOROUT      ;THEN,DISP!
+000E54  1  4C 20 12             JMP KOROUT      ;THEN,DISP!
 000E57  1               ;0E57:A5 24 218
 000E57  1               TPSAVE:
 000E57  1  A5 24                LDA CH          ;CH TEMP.SAVE
 000E59  1               ;0E59:8D 47 12 219
-000E59  1  8D 46 12             STA TEMPCH
+000E59  1  8D 47 12             STA TEMPCH
 000E5C  1               ;0E5C:A5 25 220
 000E5C  1  A5 25                LDA CV          ;CV TEMP.SAVE
 000E5E  1               ;0E5E:8D 46 12 221
-000E5E  1  8D 45 12             STA TEMPCV
+000E5E  1  8D 46 12             STA TEMPCV
 000E61  1               ;0E61:60 222
 000E61  1  60                   RTS
 000E62  1               
 000E62  1               ;0E62:AD 47 12 224
 000E62  1               TPLOAD:
-000E62  1  AD 46 12             LDA TEMPCH      ;RESTORE CH
+000E62  1  AD 47 12             LDA TEMPCH      ;RESTORE CH
 000E65  1               ;0E65:85 24 225
 000E65  1  85 24                STA CH
 000E67  1               ;0E67:AD 46 12 226
-000E67  1  AD 45 12             LDA TEMPCV      ;RESTORE CV
+000E67  1  AD 46 12             LDA TEMPCV      ;RESTORE CV
 000E6A  1               ;0E6A:85 25 227
 000E6A  1  85 25                STA CV
 000E6C  1               ;0E6C:60 228
@@ -913,7 +913,7 @@ Current file: call3327.s
 000EA5  1               ;0EA5:37 10 266
 000EA5  1  37 10                .word CTRLS-1      ;CTRL-S
 000EA7  1               ;0EA7:2D 16 267
-000EA7  1  2C 16                .word CTRLT-1      ;CTRL-T
+000EA7  1  2D 16                .word CTRLT-1      ;CTRL-T
 000EA9  1               ;0EA9:FC OF 268
 000EA9  1  FC 0F                .word SIMRTN-1     ;CTRL-U
 000EAB  1               ;0EAB:3D 10 269
@@ -940,13 +940,13 @@ Current file: call3327.s
 000EBC  1               KCTRLE:
 000EBC  1  A9 20                LDA #$20        ;A BLANK
 000EBE  1               ;0EBE:20 20 12 281
-000EBE  1  20 1F 12             JSR KOROUT      ;DISP!
+000EBE  1  20 20 12             JSR KOROUT      ;DISP!
 000EC1  1               ;0EC1:20 C2 11 282
-000EC1  1  20 C1 11             JSR HCLREOL     ;CLEAR CURRENT
+000EC1  1  20 C2 11             JSR HCLREOL     ;CLEAR CURRENT
 000EC4  1               ;0EC4:E6 25 283
 000EC4  1  E6 25                INC CV          ;CV=CV+1 LINE
 000EC6  1               ;0EC6:20 C2 11 284
-000EC6  1  20 C1 11             JSR HCLREOL     ;CLEAR NEXT LINE
+000EC6  1  20 C2 11             JSR HCLREOL     ;CLEAR NEXT LINE
 000EC9  1               ;0EC9:20 62 0E 285
 000EC9  1  20 62 0E             JSR TPLOAD      ;RESTORE $24,5
 000ECC  1               ;0ECC:60 286
@@ -956,7 +956,7 @@ Current file: call3327.s
 000ECD  1               KCTRLF:
 000ECD  1  E6 25                INC CV          ;CV=CV+1
 000ECF  1               ;0ECF:20 AF 11 289
-000ECF  1  20 AE 11             JSR HCLREOP
+000ECF  1  20 AF 11             JSR HCLREOP
 000ED2  1               ;0ED2:20 62 0E 290
 000ED2  1  20 62 0E             JSR TPLOAD
 000ED5  1               ;0ED5:60 291
@@ -983,13 +983,13 @@ Current file: call3327.s
 000EE6  1               ;0EE6:C6 25 301
 000EE6  1  C6 25                DEC CV          ;CV=CV-1
 000EE8  1               ;0EE8:20 56 11 302
-000EE8  1  20 55 11             JSR HSCROL
+000EE8  1  20 56 11             JSR HSCROL
 000EEB  1               ;0EEB:C6 25 303
 000EEB  1               ATBTM:
 000EEB  1  C6 25                DEC CV          ;CV=CV-1
 000EED  1               
 000EED  1               ;0EED:20 56 11 304
-000EED  1  20 55 11             JSR HSCROL
+000EED  1  20 56 11             JSR HSCROL
 000EF0  1               ;0EF0:20 70 FC 305
 000EF0  1  20 70 FC             JSR SCROL
 000EF3  1               ;0EF3:60 306
@@ -1030,7 +1030,7 @@ Current file: call3327.s
 000F0D  1               
 000F0D  1               ;0F0D:AD 52 12 326
 000F0D  1               KCTRLH:
-000F0D  1  AD 51 12             LDA STATE       ;GET CURRENT ST.NO
+000F0D  1  AD 52 12             LDA STATE       ;GET CURRENT ST.NO
 000F10  1               ;0F10:0A 327
 000F10  1  0A                   ASL A ;*2
 000F11  1               ;0F11:AA 328
@@ -1044,11 +1044,11 @@ Current file: call3327.s
 000F19  1               ;0F19:48 332
 000F19  1  48                   PHA
 000F1A  1               ;0F1A:AE 52 12 333
-000F1A  1  AE 51 12             LDX STATE
+000F1A  1  AE 52 12             LDX STATE
 000F1D  1               ;OF1D:BD 26 0F 334
 000F1D  1  BD 26 0F             LDA STCONV,X    ;GET NEW STATE NO.
 000F20  1               ;0F20:8D 52 12 335
-000F20  1  8D 51 12             STA STATE
+000F20  1  8D 52 12             STA STATE
 000F23  1               ;0F23:A9 20 336
 000F23  1  A9 20                LDA #$20        ;A BLANK
 000F25  1               ;0F25:60 337
@@ -1095,17 +1095,17 @@ Current file: call3327.s
 000F31  1               KCTRLHV:
 000F31  1  46 0F                .word WASIN0-1
 000F33  1               ;0F33:4D 14 364
-000F33  1  4C 14                .word WASIN1-1
+000F33  1  4D 14                .word WASIN1-1
 000F35  1               ;0F35:77 0F 365
 000F35  1  77 0F                .word WASIN25-1
 000F37  1               ;0F37:62 14 366
-000F37  1  61 14                .word WASIN3-1
+000F37  1  62 14                .word WASIN3-1
 000F39  1               ;0F39:76 14 367
-000F39  1  75 14                .word WASIN4-1
+000F39  1  76 14                .word WASIN4-1
 000F3B  1               ;0F3B:77 0F 368
 000F3B  1  77 0F                .word WASIN25-1
 000F3D  1               ;OF3D:58 14 369
-000F3D  1  57 14                .word WASIN6-1
+000F3D  1  58 14                .word WASIN6-1
 000F3F  1               ;0F3F:5C 0F 370
 000F3F  1  5C 0F                .word WASIN7-1
 000F41  1               ;0F41:65 0F 371
@@ -1113,7 +1113,7 @@ Current file: call3327.s
 000F43  1               ;0F43:6E 0F 372
 000F43  1  6E 0F                .word WASWHAT-1    ;?
 000F45  1               ;0F45:58 14 373
-000F45  1  57 14                .word WASIN6-1     ;?
+000F45  1  58 14                .word WASIN6-1     ;?
 000F47  1               
 000F47  1               ;0F47:C6 24 375
 000F47  1               WASIN0:
@@ -1136,37 +1136,37 @@ Current file: call3327.s
 000F58  1               ;0F58:A9 20 383
 000F58  1  A9 20                LDA #$20        ;CHR.=BLANK!
 000F5A  1               ;0F5A:4C 4E 14 384
-000F5A  1  4C 4D 14             JMP WASIN1      ;CV,CV+1 CLEAR!
+000F5A  1  4C 4E 14             JMP WASIN1      ;CV,CV+1 CLEAR!
 000F5D  1               
 000F5D  1               ;OF5D:AD 4C 12 386
 000F5D  1               WASIN7:
-000F5D  1  AD 4B 12             LDA P123B       ;GET C' OF 1ST
+000F5D  1  AD 4C 12             LDA P123B       ;GET C' OF 1ST
 000F60  1               ;0F60:20 77 14 387
-000F60  1  20 76 14             JSR WASIN4      ;MAKE IT C OF 2ND
+000F60  1  20 77 14             JSR WASIN4      ;MAKE IT C OF 2ND
 000F63  1               ;0F63:4C 61 14 388
-000F63  1  4C 60 14             JMP LOWBLK
+000F63  1  4C 61 14             JMP LOWBLK
 000F66  1               
 000F66  1               ;OF66:AD 4C 12 390
 000F66  1               WASIN8:
-000F66  1  AD 4B 12             LDA P123B       ;GET C' OF 1ST
+000F66  1  AD 4C 12             LDA P123B       ;GET C' OF 1ST
 000F69  1               ;0F69:20 59 14 391
-000F69  1  20 58 14             JSR WASIN6      ;MAKE IT AS C OF 2ND
+000F69  1  20 59 14             JSR WASIN6      ;MAKE IT AS C OF 2ND
 000F6C  1               ;0F6C:4C 61 14 392
-000F6C  1  4C 60 14             JMP LOWBLK
+000F6C  1  4C 61 14             JMP LOWBLK
 000F6F  1               
 000F6F  1               ;OF6F:AD 4C 12 394
 000F6F  1               WASWHAT:
-000F6F  1  AD 4B 12             LDA P123B
+000F6F  1  AD 4C 12             LDA P123B
 000F72  1               ;0F72:20 59 14 395
-000F72  1  20 58 14             JSR WASIN6
+000F72  1  20 59 14             JSR WASIN6
 000F75  1               ;0F75:4C 61 14 396
-000F75  1  4C 60 14             JMP LOWBLK
+000F75  1  4C 61 14             JMP LOWBLK
 000F78  1               
 000F78  1               ;0F78:20 59 14 398
 000F78  1               WASIN25:
-000F78  1  20 58 14             JSR WASIN6      ;DELETE V.V
+000F78  1  20 59 14             JSR WASIN6      ;DELETE V.V
 000F7B  1               ;0F7B:4C 6B 14 399
-000F7B  1  4C 6A 14             JMP LOWBLK2
+000F7B  1  4C 6B 14             JMP LOWBLK2
 000F7E  1               
 000F7E  1               ;0F7E:20 F4 0E 401
 000F7E  1               KCTRLM:
@@ -1204,7 +1204,7 @@ Current file: call3327.s
 000F97  1               ;0F97:F7 OF 420
 000F97  1  F7 0F                .word CTRLI-1      ;CTRL-I
 000F99  1               ;0F99:38 11 421
-000F99  1  37 11                .word CTRLJ-1      ;CTRL-J
+000F99  1  38 11                .word CTRLJ-1      ;CTRL-J
 000F9B  1               ;OF9B:FD OF 422
 000F9B  1  FD 0F                .word CTRLK-1      ;CTRL-K
 000F9D  1               ;OF9D:FC 0F 423
@@ -1224,7 +1224,7 @@ Current file: call3327.s
 000FAB  1               ;OFAB:37 10 430
 000FAB  1  37 10                .word CTRLS-1      ;CTRL-S
 000FAD  1               ;OFAD:2D 16 431
-000FAD  1  2C 16                .word CTRLT-1      ;CTRL-T
+000FAD  1  2D 16                .word CTRLT-1      ;CTRL-T
 000FAF  1               ;OFAF:FC 0F 432
 000FAF  1  FC 0F                .word SIMRTN-1     ;CTRL-U
 000FB1  1               ;0FB1:3D 10 433
@@ -1251,7 +1251,7 @@ Current file: call3327.s
 000FC4  1  B0 37                BCS SIMRTN
 000FC6  1               ;0FC6:4C 39 11 444
 000FC6  1               GOCR:
-000FC6  1  4C 38 11             JMP CTRLJ
+000FC6  1  4C 39 11             JMP CTRLJ
 000FC9  1               
 000FC9  1               ;0FC9:2C 54 CO 446
 000FC9  1               CHKPAG:
@@ -1269,14 +1269,14 @@ Current file: call3327.s
 000FD7  1               
 000FD7  1               ;0FD7:20 C2 11 453
 000FD7  1               CTRLE:
-000FD7  1  20 C1 11             JSR HCLREOL     ;CLEAR END OF LINE
+000FD7  1  20 C2 11             JSR HCLREOL     ;CLEAR END OF LINE
 000FDA  1               
 000FDA  1               ;OFDA:4C 9C FC 454
 000FDA  1  4C 9C FC             JMP CLREOL
 000FDD  1               
 000FDD  1               ;OFDD:20 AF 11 456
 000FDD  1               CTRLF:
-000FDD  1  20 AE 11             JSR HCLREOP     ;CLEAR END OF PAGE
+000FDD  1  20 AF 11             JSR HCLREOP     ;CLEAR END OF PAGE
 000FE0  1               ;0FE0:4C 42 FC 457
 000FE0  1  4C 42 FC             JMP CLREOP
 000FE3  1               
@@ -1341,7 +1341,7 @@ Current file: call3327.s
 00101C  1               
 00101C  1               ;101C:4C 35 11 488
 00101C  1               SCRL1:
-00101C  1  4C 34 11             JMP SCROL1
+00101C  1  4C 35 11             JMP SCROL1
 00101F  1               
 00101F  1               ;101F:A9 00 490
 00101F  1               CTRLN:
@@ -1353,7 +1353,7 @@ Current file: call3327.s
 001025  1               
 001025  1               ;1025:20 A5 11 494
 001025  1               CTRLP:
-001025  1  20 A4 11             JSR HIHOME      ;HOME!
+001025  1  20 A5 11             JSR HIHOME      ;HOME!
 001028  1               ;1028:4C 58 FC 495
 001028  1  4C 58 FC             JMP HOME
 00102B  1               
@@ -1531,6 +1531,8 @@ Current file: call3327.s
 0010C8  1               ;10C8: 581 ;            & DISPLAY THEM
 0010C8  1               ;10C8: 582 ;**************************************
 0010C8  1               
+0010C8  1               ;;;; X = glyph 88 = ascii 88
+0010C8  1               
 0010C8  1               ;10C8:0A 584
 0010C8  1               NORDISP:
 0010C8  1  0A                   ASL A
@@ -1544,1603 +1546,1604 @@ Current file: call3327.s
 0010CE  1  0A                   ASL A
 0010CF  1               ;10CF:26 EF 589
 0010CF  1  26 EF                ROL PATLOC+1
-0010D1  1               ;10D1:18 590 CLC
-0010D1  1               ;10D2:6D 45 OD 591
-0010D1  1  6D 45 0D             ADC PATBASE
-0010D4  1               ;10D5:85 EE 592
-0010D4  1  85 EE                STA PATLOC
-0010D6  1               ;10D7:A5 EF 593
-0010D6  1  A5 EF                LDA PATLOC+1
-0010D8  1               ;10D9:29 07 594
-0010D8  1  29 07                AND #7
-0010DA  1               ;10DB:6D 46 OD 595
-0010DA  1  6D 46 0D             ADC PATBASE+1
-0010DD  1               ;10DE:85 EF 596
-0010DD  1  85 EF                STA PATLOC+1
-0010DF  1               
-0010DF  1               ;10E0:20 00 12 598
-0010DF  1  20 FF 11             JSR BASCALC1
-0010E2  1               ;10E3:65 24 599
-0010E2  1  65 24                ADC CH
-0010E4  1               ;10E5:85 2A 600
-0010E4  1  85 2A                STA BAS2L
-0010E6  1               ;10E7:85 EC 601
-0010E6  1  85 EC                STA PLOC
-0010E8  1               ;10E9:A5 2B 602
-0010E8  1  A5 2B                LDA BAS2L+1
-0010EA  1               ;10EB:4D 42 OD 603
-0010EA  1  4D 42 0D             EOR ADRFL
-0010ED  1               ;10EE:85 ED 604
-0010ED  1  85 ED                STA PLOC+1
-0010EF  1               ;10F0:A4 24 605
-0010EF  1  A4 24                LDY CH
-0010F1  1               ;10F2:A5 FF 606
-0010F1  1  A5 FF                LDA SACC
-0010F3  1               ;10F4:91 28 607
-0010F3  1  91 28                STA (BASL),Y
-0010F5  1               ;10F6:A2 00 608
-0010F5  1  A2 00                LDX #0
-0010F7  1               
-0010F7  1               ;10F8:A0 00 609
-0010F7  1  A0 00                LDY #0
-0010F9  1               ;10FA:B1 EE 610
-0010F9  1               DISPCON:
-0010F9  1  B1 EE                LDA (PATLOC),Y  ;GET PATTERN
-0010FB  1               ;10FC:4D 40 OD 611
-0010FB  1  4D 40 0D             EOR INVFLG
-0010FE  1               ;10FF:2C 41 OD 612
-0010FE  1  2C 41 0D             BIT POSFL
-001101  1               ;1102:10 11 613
-001101  1  10 11                BPL NO7
-001103  1               ;1104:70 OD 614
-001103  1  70 0D                BVS DOEOR
-001105  1               ;1106:2C 40 OD 615
-001105  1  2C 40 0D             BIT INVFLG
-001108  1               ;1109:70 04 616
-001108  1  70 04                BVS DOAND
-00110A  1               ;110B:01 EC 617
-00110A  1  01 EC                ORA (PLOC,X)
-00110C  1               ;110D:50 06 618
-00110C  1  50 06                BVC NO7         ;GOTO
-00110E  1               ;110F:21 EC 619
-00110E  1               DOAND:
-00110E  1  21 EC                AND (PLOC,X)
-001110  1               ;1111:70 02 620
-001110  1  70 02                BVS NO7
-001112  1               ;1113:41 EC 621
-001112  1               DOEOR:
-001112  1  41 EC                EOR (PLOC,X)
-001114  1               ;1115:81 2A 622
-001114  1               NO7:
-001114  1  81 2A                STA (BAS2L,X)
-001116  1               ;1117:08 623
-001116  1  C8                   INY
-001117  1               ;1118:CO 08 624
-001117  1  C0 08                CPY #8          ;8 SCAN LINE ALL?
-001119  1               ;111A:BO OD 625
-001119  1  B0 0D                BCS RTS4
-00111B  1               ;111C:A5 2B 626
-00111B  1  A5 2B                LDA BAS2L+1
-00111D  1               ;111E:69 04 627
-00111D  1  69 04                ADC #4          ;ADDR+$400
-00111F  1               ;1120:85 2B 628
-00111F  1  85 2B                STA BAS2L+1
-001121  1               ;1122:4D 42 OD 629
-001121  1  4D 42 0D             EOR ADRFL
-001124  1               ;1125:85 ED 630
-001124  1  85 ED                STA PLOC+1
-001126  1               ;1127:90 D1 631
-001126  1  90 D1                BCC DISPCON
-001128  1               ;1129:60 632
-001128  1               RTS4:
-001128  1  60                   RTS
-001129  1               
-001129  1               ;112A:20 C8 10 634
-001129  1               NORMOUT:
-001129  1  20 C8 10             JSR NORDISP     ;DISP. A CHR.
-00112C  1               ;112D:E6 24 635
-00112C  1  E6 24                INC CH          ;CH=CH+1
-00112E  1               ;112F:A5 24 636
-00112E  1  A5 24                LDA CH
-001130  1               ;1131:C5 21 637
-001130  1  C5 21                CMP WNDWDTH
-001132  1               ;1133:90 20 638
-001132  1  90 20                BCC RTS5
-001134  1               ;1135:A9 00 639
-001134  1               SCROL1:
-001134  1  A9 00                LDA #0
-001136  1               ;1137:85 24 640
-001136  1  85 24                STA CH
-001138  1               ;1139:E6 25 641
-001138  1               CTRLJ:
-001138  1  E6 25                INC CV          ;CV=CV+1
-00113A  1               ;113B:A5 25 642
-00113A  1  A5 25                LDA CV          ;CHECK IF BOTTOM!
-00113C  1               ;113D:C5 23 643
-00113C  1  C5 23                CMP WNDBTM
-00113E  1               ;113F:90 11 644
-00113E  1  90 11                BCC NOVER
-001140  1               ;1141:2C 43 OD 645
-001140  1  2C 43 0D             BIT AUTO        ;AUTO HOME FLAG?
-001143  1               ;1144:70 08 646
-001143  1  70 08                BVS AUTDON
-001145  1               ;1146:C6 25 647
-001145  1  C6 25                DEC CV
-001147  1               ;1148:20 56 11 648
-001147  1  20 55 11             JSR HSCROL
-00114A  1               ;114B:4C 70 FC 649
-00114A  1  4C 70 FC             JMP SCROL
-00114D  1               
-00114D  1               ;114E:A5 22 651
-00114D  1               AUTDON:
-00114D  1  A5 22                LDA WNDTOP
-00114F  1               ;1150:85 25 652
-00114F  1  85 25                STA CV
-001151  1               ;1152:20 24 FC 653
-001151  1               NOVER:
-001151  1  20 24 FC             JSR VTABZ
-001154  1               ;1155:60 654
-001154  1               RTS5:
-001154  1  60                   RTS
-001155  1               
-001155  1               ;1156:A5 22 656
-001155  1               HSCROL:
-001155  1  A5 22                LDA WNDTOP      ;FROM TOP!
-001157  1               ;1158:48 657
-001157  1  48                   PHA
-001158  1               ;1159:20 02 12 658
-001158  1  20 01 12             JSR BASCALC
-00115B  1               
-00115B  1               ;115C:A5 2A 659
-00115B  1               LOOP1:
-00115B  1  A5 2A                LDA BAS2L
-00115D  1               ;115E:85 EC 660
-00115D  1  85 EC                STA PLOC        ;MAKE DESTINE.
-00115F  1               ;1160:A5 2B 661
-00115F  1  A5 2B                LDA BAS2L+1
-001161  1               ;1162:29 E3 662
-001161  1  29 E3                AND #$E3
-001163  1               ;1164:85 ED 663
-001163  1  85 ED                STA PLOC+1
-001165  1               ;1166:68 664
-001165  1  68                   PLA
-001166  1               ;1167:18 665
-001166  1  18                   CLC
-001167  1               ;1168:69 01 666
-001167  1  69 01                ADC #1          ;NEXT
-001169  1               ;116A:C5 23 667
-001169  1  C5 23                CMP WNDBTM
-00116B  1               ;116C:B0 22 668
-00116B  1  B0 22                BCS UPALL       ;ALL EXCEPT BOTTOM?
-00116D  1               ;116E:48 669
-00116D  1  48                   PHA             ;SAVE FOR NEXT SCROL
-00116E  1               ;116F:20 02 12 670
-00116E  1  20 01 12             JSR BASCALC     ;MAKE SOURCE
-001171  1               ;1172:A2 07 671
-001171  1  A2 07                LDX #7          ;8 TIMES
-001173  1               ;1174:A4 21 672
-001173  1               LOOP2:
-001173  1  A4 21                LDY WNDWDTH
-001175  1               ;1176:88 673
-001175  1  88                   DEY
-001176  1               ;1177:B1 2A 674
-001176  1               SCRL:
-001176  1  B1 2A                LDA (BAS2L),Y   ;FROM
-001178  1               ;1179:91 EC 675
-001178  1  91 EC                STA (PLOC),Y    ;TO
-00117A  1               ;117B:88 676
-00117A  1  88                   DEY
-00117B  1               ;117C:10 F9 677
-00117B  1  10 F9                BPL SCRL
-00117D  1               ;117E:CA 678
-00117D  1  CA                   DEX
-00117E  1               ;117F:30 DB 679
-00117E  1  30 DB                BMI LOOP1
-001180  1               ;1181:18 680
-001180  1  18                   CLC
-001181  1               ;1182:A5 2B 681
-001181  1  A5 2B                LDA BAS2L+1
-001183  1               ;1184:69 04 682
-001183  1  69 04                ADC #4          ;NEXT SCAN LINE ADDR
-001185  1               ;1186:85 2B 683
-001185  1  85 2B                STA BAS2L+1
-001187  1               ;1188:A5 ED 684
-001187  1  A5 ED                LDA PLOC+1
-001189  1               ;118A:69 04 685
-001189  1  69 04                ADC #4          ;NEXT SCAN LINE
-00118B  1               ;118C:85 ED 686
-00118B  1  85 ED                STA PLOC+1
-00118D  1               ;118E:DO E4 687
-00118D  1  D0 E4                BNE LOOP2       ;GOTO
-00118F  1               ;1190:AD 41 OD 688
-00118F  1               UPALL:
-00118F  1  AD 41 0D             LDA POSFL       ;BOTTOM LINE CLEA
-001192  1               ;1193:48 689
-001192  1  48                   PHA
-001193  1               ;1194:A5 23 690
-001193  1  A5 23                LDA WNDBTM
-001195  1               ;1196:E9 01 691
-001195  1  E9 01                SBC #1
-001197  1               ;1198:A0 00 692
-001197  1  A0 00                LDY #0
-001199  1               ;119A:8C 41 OD 693
-001199  1  8C 41 0D             STY POSFL
-00119C  1               ;119D:20 C6 11 694
-00119C  1  20 C5 11             JSR HCLREOL1
-00119F  1               ;11A0:68 695
-00119F  1  68                   PLA
-0011A0  1               ;11A1:8D 41 OD 696
-0011A0  1  8D 41 0D             STA POSFL
-0011A3  1               ;11A4:60 697
-0011A3  1  60                   RTS
-0011A4  1               
-0011A4  1               ;11A5:A5 22 699
-0011A4  1               HIHOME:
-0011A4  1  A5 22                LDA WNDTOP      ;HI-GRAPHIC HOME
-0011A6  1               ;11A7:85 25 700
-0011A6  1  85 25                STA CV          ;FROM TOP
-0011A8  1               ;11A9:A0 00 701
-0011A8  1  A0 00                LDY #0
-0011AA  1               ;11AB:84 24 702
-0011AA  1  84 24                STY CH
-0011AC  1               ;11AD:F0 04 703
-0011AC  1  F0 04                BEQ HCLREOP1    ;GOTO
-0011AE  1               ;11AF:A4 24 705
-0011AE  1               HCLREOP:
-0011AE  1  A4 24                LDY CH          ;CLEAR END OF PAG
-0011B0  1               ;11B1:A5 25 706
-0011B0  1  A5 25                LDA CV
-0011B2  1               ;11B3:48 707
-0011B2  1               HCLREOP1:
-0011B2  1  48                   PHA
-0011B3  1               ;11B4:20 C6 11 708
-0011B3  1  20 C5 11             JSR HCLREOL1    ;CLEAR A LINE
-0011B6  1               ;11B7:68 709
-0011B6  1  68                   PLA
-0011B7  1               
-0011B7  1               ;11B8:18 710
-0011B7  1  18                   CLC
-0011B8  1               ;11B9:69 01 711
-0011B8  1  69 01                ADC #1
-0011BA  1               ;11BB:C5 23 712
-0011BA  1  C5 23                CMP WNDBTM
-0011BC  1               ;11BD:AO 00 713
-0011BC  1  A0 00                LDY #0
-0011BE  1               ;11BF:90 F2 714
-0011BE  1  90 F2                BCC HCLREOP1
-0011C0  1               ;11C1:60 715
-0011C0  1  60                   RTS
-0011C1  1               
-0011C1  1               ;11C2:A4 24 717
-0011C1  1               HCLREOL:
-0011C1  1  A4 24                LDY CH          ;CLEAR END OF LINE
-0011C3  1               ;11C4:A5 25 718
-0011C3  1  A5 25                LDA CV
-0011C5  1               ;11C6:84 EE 719
-0011C5  1               HCLREOL1:
-0011C5  1  84 EE                STY PATLOC
-0011C7  1               ;11C8:20 02 12 720
-0011C7  1  20 01 12             JSR BASCALC
-0011CA  1               ;11CB:A2 07 721
-0011CA  1  A2 07                LDX #7
-0011CC  1               ;11CD:AD 40 OD 722
-0011CC  1               LOOP3:
-0011CC  1  AD 40 0D             LDA INVFLG
-0011CF  1               ;11D0:2C 41 OD 723
-0011CF  1  2C 41 0D             BIT POSFL
-0011D2  1               ;11D3:10 15 724
-0011D2  1  10 15                BPL NO8
-0011D4  1               ;11D5:A5 2A 725
-0011D4  1  A5 2A                LDA BAS2L
-0011D6  1               ;11D7:85 EC 726
-0011D6  1  85 EC                STA PLOC
-0011D8  1               ;11D9:A5 2B 727
-0011D8  1  A5 2B                LDA BAS2L+1
-0011DA  1               ;11DB:4D 42 OD 728
-0011DA  1  4D 42 0D             EOR ADRFL
-0011DD  1               ;11DE:85 ED 729
-0011DD  1  85 ED                STA PLOC+1
-0011DF  1               ;11E0:B1 EC 730
-0011DF  1  B1 EC                LDA (PLOC),Y
-0011E1  1               ;11E2:2C 41 OD 731
-0011E1  1  2C 41 0D             BIT POSFL
-0011E4  1               ;11E5:50 03 732
-0011E4  1  50 03                BVC NO8
-0011E6  1               ;11E7:4D 40 OD 733
-0011E6  1  4D 40 0D             EOR INVFLG
-0011E9  1               ;11EA:91 2A 734
-0011E9  1               NO8:
-0011E9  1  91 2A                STA (BAS2L),Y
-0011EB  1               ;11EC:C8 735
-0011EB  1  C8                   INY
-0011EC  1               ;11ED:C4 21 736
-0011EC  1  C4 21                CPY WNDWDTH
-0011EE  1               ;11EF:90 DC 737
-0011EE  1  90 DC                BCC LOOP3
-0011F0  1               ;11F1:CA 738
-0011F0  1  CA                   DEX
-0011F1  1               ;11F2:30 0B 739
-0011F1  1  30 0B                BMI RTS7
-0011F3  1               ;11F4:A4 EE 740
-0011F3  1  A4 EE                LDY PATLOC
-0011F5  1               ;11F6:A5 2B 741
-0011F5  1  A5 2B                LDA BAS2L+1
-0011F7  1               ;11F8:18 742
-0011F7  1  18                   CLC
-0011F8  1               ;11F9:69 04 743
-0011F8  1  69 04                ADC #4
-0011FA  1               ;11FB:85 2B 744
-0011FA  1  85 2B                STA BAS2L+1
-0011FC  1               ;11FD:DO CE 745
-0011FC  1  D0 CE                BNE LOOP3
-0011FE  1               ;11FF:60 746
-0011FE  1               RTS7:
-0011FE  1  60                   RTS
-0011FF  1               
-0011FF  1               ;1200:A5 25 748
-0011FF  1               BASCALC1:
-0011FF  1  A5 25                LDA CV
-001201  1               
-001201  1               ;1202: 750 *****************************************************
-001201  1               ;1202: 751 *
-001201  1               ;1202: 752 * BASE CALCULATION:CV IN ACC.->BAS2L, +1
-001201  1               ;1202: 753 *
-001201  1               ;1202: 754 *****************************************************
-001201  1               
-001201  1               ;1202:4A 756
-001201  1               BASCALC:
-001201  1  4A                   LSR A           ;/2
-001202  1               ;1203:AA 757
-001202  1  AA                   TAX
-001203  1               ;1204:29 03 758
-001203  1  29 03                AND #3
-001205  1               ;1206:0D 3F OD 759
-001205  1  0D 3F 0D             ORA HGRAD
-001208  1               ;1209:85 2B 760
-001208  1  85 2B                STA BAS2L+1
-00120A  1               ;120B:BD 14 12 761
-00120A  1  BD 13 12             LDA BASETBL,X
-00120D  1               ;120E:6A 762
-00120D  1  6A                   ROR A
-00120E  1               ;120F:65 20 763
-00120E  1  65 20                ADC WNDLFT
-001210  1               ;1211:85 2A 764
-001210  1  85 2A                STA BAS2L
-001212  1               ;1213:60 765
-001212  1  60                   RTS
-001213  1               
-001213  1               ;1214:00 767
-001213  1               BASETBL:
-001213  1  00                   .byte $00         ;FOR 0,1
-001214  1               ;1215:00 768
-001214  1  00                   .byte $00         ;FOR 2,3
-001215  1               ;1216:00 769
-001215  1  00                   .byte $00         ;FOR 4,5
-001216  1               ;1217:00 770
-001216  1  00                   .byte $00         ;FOR 6, 7
-001217  1               ;1218:50 771
-001217  1  50                   .byte $50         ;FOR 8,9
-001218  1               ;1219:50 772
-001218  1  50                   .byte $50         ;FOR a,b
-001219  1               ;121A:50 773
-001219  1  50                   .byte $50         ;FOR c,d
-00121A  1               ;121B:50 774
-00121A  1  50                   .byte $50         ;FOR E,F
-00121B  1               ;121C:A0 775
-00121B  1  A0                   .byte $A0         ;FOR 10,11
-00121C  1               ;121D:AO 776
-00121C  1  A0                   .byte $A0         ;FOR 12,13
-00121D  1               ;121E:A0 777
-00121D  1  A0                   .byte $A0         ;FOR 14,15
-00121E  1               ;121F:A0 778
-00121E  1  A0                   .byte $A0         ;FOR 16,17
-00121F  1               
-00121F  1               ;1220:38 780
-00121F  1               KOROUT:
-00121F  1  38                   SEC
-001220  1               ;1221:E9 20 781
-001220  1  E9 20                SBC #$20        ;SUBTRACT BASE CODE
-001222  1               ;1223:AA 782
-001222  1  AA                   TAX
-001223  1               ;1224:BD DB 12 783
-001223  1  BD DA 12             LDA CONVTBL,X
-001226  1               ;1227:85 EF 784
-001226  1  85 EF                STA PATLOC+1
-001228  1               ;1229:BD 9B 12 785
-001228  1  BD 9A 12             LDA TYPETBL,X   ;GET CHR.TYPE
-00122B  1               ;122C:85 EE 786
-00122B  1  85 EE                STA PATLOC
-00122D  1               ;122E:20 57 0E 787
-00122D  1  20 57 0E             JSR TPSAVE
-001230  1               ;1231:AD 52 12 788
-001230  1  AD 51 12             LDA STATE
-001233  1               ;1234:0A 789
-001233  1  0A                   ASL A
-001234  1               ;1235:0A 790
+0010D1  1               ;10D1:18 590
+0010D1  1  18                   CLC
+0010D2  1               ;10D2:6D 45 OD 591
+0010D2  1  6D 45 0D             ADC PATBASE
+0010D5  1               ;10D5:85 EE 592
+0010D5  1  85 EE                STA PATLOC
+0010D7  1               ;10D7:A5 EF 593
+0010D7  1  A5 EF                LDA PATLOC+1
+0010D9  1               ;10D9:29 07 594
+0010D9  1  29 07                AND #7
+0010DB  1               ;10DB:6D 46 OD 595
+0010DB  1  6D 46 0D             ADC PATBASE+1
+0010DE  1               ;10DE:85 EF 596
+0010DE  1  85 EF                STA PATLOC+1
+0010E0  1               
+0010E0  1               ;10E0:20 00 12 598
+0010E0  1  20 00 12             JSR BASCALC1
+0010E3  1               ;10E3:65 24 599
+0010E3  1  65 24                ADC CH
+0010E5  1               ;10E5:85 2A 600
+0010E5  1  85 2A                STA BAS2L
+0010E7  1               ;10E7:85 EC 601
+0010E7  1  85 EC                STA PLOC
+0010E9  1               ;10E9:A5 2B 602
+0010E9  1  A5 2B                LDA BAS2L+1
+0010EB  1               ;10EB:4D 42 OD 603
+0010EB  1  4D 42 0D             EOR ADRFL
+0010EE  1               ;10EE:85 ED 604
+0010EE  1  85 ED                STA PLOC+1
+0010F0  1               ;10F0:A4 24 605
+0010F0  1  A4 24                LDY CH
+0010F2  1               ;10F2:A5 FF 606
+0010F2  1  A5 FF                LDA SACC
+0010F4  1               ;10F4:91 28 607
+0010F4  1  91 28                STA (BASL),Y
+0010F6  1               ;10F6:A2 00 608
+0010F6  1  A2 00                LDX #0
+0010F8  1               
+0010F8  1               ;10F8:A0 00 609
+0010F8  1  A0 00                LDY #0
+0010FA  1               ;10FA:B1 EE 610
+0010FA  1               DISPCON:
+0010FA  1  B1 EE                LDA (PATLOC),Y  ;GET PATTERN
+0010FC  1               ;10FC:4D 40 OD 611
+0010FC  1  4D 40 0D             EOR INVFLG
+0010FF  1               ;10FF:2C 41 OD 612
+0010FF  1  2C 41 0D             BIT POSFL
+001102  1               ;1102:10 11 613
+001102  1  10 11                BPL NO7
+001104  1               ;1104:70 OD 614
+001104  1  70 0D                BVS DOEOR
+001106  1               ;1106:2C 40 OD 615
+001106  1  2C 40 0D             BIT INVFLG
+001109  1               ;1109:70 04 616
+001109  1  70 04                BVS DOAND
+00110B  1               ;110B:01 EC 617
+00110B  1  01 EC                ORA (PLOC,X)
+00110D  1               ;110D:50 06 618
+00110D  1  50 06                BVC NO7         ;GOTO
+00110F  1               ;110F:21 EC 619
+00110F  1               DOAND:
+00110F  1  21 EC                AND (PLOC,X)
+001111  1               ;1111:70 02 620
+001111  1  70 02                BVS NO7
+001113  1               ;1113:41 EC 621
+001113  1               DOEOR:
+001113  1  41 EC                EOR (PLOC,X)
+001115  1               ;1115:81 2A 622
+001115  1               NO7:
+001115  1  81 2A                STA (BAS2L,X)
+001117  1               ;1117:08 623
+001117  1  C8                   INY
+001118  1               ;1118:CO 08 624
+001118  1  C0 08                CPY #8          ;8 SCAN LINE ALL?
+00111A  1               ;111A:BO OD 625
+00111A  1  B0 0D                BCS RTS4
+00111C  1               ;111C:A5 2B 626
+00111C  1  A5 2B                LDA BAS2L+1
+00111E  1               ;111E:69 04 627
+00111E  1  69 04                ADC #4          ;ADDR+$400
+001120  1               ;1120:85 2B 628
+001120  1  85 2B                STA BAS2L+1
+001122  1               ;1122:4D 42 OD 629
+001122  1  4D 42 0D             EOR ADRFL
+001125  1               ;1125:85 ED 630
+001125  1  85 ED                STA PLOC+1
+001127  1               ;1127:90 D1 631
+001127  1  90 D1                BCC DISPCON
+001129  1               ;1129:60 632
+001129  1               RTS4:
+001129  1  60                   RTS
+00112A  1               
+00112A  1               ;112A:20 C8 10 634
+00112A  1               NORMOUT:
+00112A  1  20 C8 10             JSR NORDISP     ;DISP. A CHR.
+00112D  1               ;112D:E6 24 635
+00112D  1  E6 24                INC CH          ;CH=CH+1
+00112F  1               ;112F:A5 24 636
+00112F  1  A5 24                LDA CH
+001131  1               ;1131:C5 21 637
+001131  1  C5 21                CMP WNDWDTH
+001133  1               ;1133:90 20 638
+001133  1  90 20                BCC RTS5
+001135  1               ;1135:A9 00 639
+001135  1               SCROL1:
+001135  1  A9 00                LDA #0
+001137  1               ;1137:85 24 640
+001137  1  85 24                STA CH
+001139  1               ;1139:E6 25 641
+001139  1               CTRLJ:
+001139  1  E6 25                INC CV          ;CV=CV+1
+00113B  1               ;113B:A5 25 642
+00113B  1  A5 25                LDA CV          ;CHECK IF BOTTOM!
+00113D  1               ;113D:C5 23 643
+00113D  1  C5 23                CMP WNDBTM
+00113F  1               ;113F:90 11 644
+00113F  1  90 11                BCC NOVER
+001141  1               ;1141:2C 43 OD 645
+001141  1  2C 43 0D             BIT AUTO        ;AUTO HOME FLAG?
+001144  1               ;1144:70 08 646
+001144  1  70 08                BVS AUTDON
+001146  1               ;1146:C6 25 647
+001146  1  C6 25                DEC CV
+001148  1               ;1148:20 56 11 648
+001148  1  20 56 11             JSR HSCROL
+00114B  1               ;114B:4C 70 FC 649
+00114B  1  4C 70 FC             JMP SCROL
+00114E  1               
+00114E  1               ;114E:A5 22 651
+00114E  1               AUTDON:
+00114E  1  A5 22                LDA WNDTOP
+001150  1               ;1150:85 25 652
+001150  1  85 25                STA CV
+001152  1               ;1152:20 24 FC 653
+001152  1               NOVER:
+001152  1  20 24 FC             JSR VTABZ
+001155  1               ;1155:60 654
+001155  1               RTS5:
+001155  1  60                   RTS
+001156  1               
+001156  1               ;1156:A5 22 656
+001156  1               HSCROL:
+001156  1  A5 22                LDA WNDTOP      ;FROM TOP!
+001158  1               ;1158:48 657
+001158  1  48                   PHA
+001159  1               ;1159:20 02 12 658
+001159  1  20 02 12             JSR BASCALC
+00115C  1               
+00115C  1               ;115C:A5 2A 659
+00115C  1               LOOP1:
+00115C  1  A5 2A                LDA BAS2L
+00115E  1               ;115E:85 EC 660
+00115E  1  85 EC                STA PLOC        ;MAKE DESTINE.
+001160  1               ;1160:A5 2B 661
+001160  1  A5 2B                LDA BAS2L+1
+001162  1               ;1162:29 E3 662
+001162  1  29 E3                AND #$E3
+001164  1               ;1164:85 ED 663
+001164  1  85 ED                STA PLOC+1
+001166  1               ;1166:68 664
+001166  1  68                   PLA
+001167  1               ;1167:18 665
+001167  1  18                   CLC
+001168  1               ;1168:69 01 666
+001168  1  69 01                ADC #1          ;NEXT
+00116A  1               ;116A:C5 23 667
+00116A  1  C5 23                CMP WNDBTM
+00116C  1               ;116C:B0 22 668
+00116C  1  B0 22                BCS UPALL       ;ALL EXCEPT BOTTOM?
+00116E  1               ;116E:48 669
+00116E  1  48                   PHA             ;SAVE FOR NEXT SCROL
+00116F  1               ;116F:20 02 12 670
+00116F  1  20 02 12             JSR BASCALC     ;MAKE SOURCE
+001172  1               ;1172:A2 07 671
+001172  1  A2 07                LDX #7          ;8 TIMES
+001174  1               ;1174:A4 21 672
+001174  1               LOOP2:
+001174  1  A4 21                LDY WNDWDTH
+001176  1               ;1176:88 673
+001176  1  88                   DEY
+001177  1               ;1177:B1 2A 674
+001177  1               SCRL:
+001177  1  B1 2A                LDA (BAS2L),Y   ;FROM
+001179  1               ;1179:91 EC 675
+001179  1  91 EC                STA (PLOC),Y    ;TO
+00117B  1               ;117B:88 676
+00117B  1  88                   DEY
+00117C  1               ;117C:10 F9 677
+00117C  1  10 F9                BPL SCRL
+00117E  1               ;117E:CA 678
+00117E  1  CA                   DEX
+00117F  1               ;117F:30 DB 679
+00117F  1  30 DB                BMI LOOP1
+001181  1               ;1181:18 680
+001181  1  18                   CLC
+001182  1               ;1182:A5 2B 681
+001182  1  A5 2B                LDA BAS2L+1
+001184  1               ;1184:69 04 682
+001184  1  69 04                ADC #4          ;NEXT SCAN LINE ADDR
+001186  1               ;1186:85 2B 683
+001186  1  85 2B                STA BAS2L+1
+001188  1               ;1188:A5 ED 684
+001188  1  A5 ED                LDA PLOC+1
+00118A  1               ;118A:69 04 685
+00118A  1  69 04                ADC #4          ;NEXT SCAN LINE
+00118C  1               ;118C:85 ED 686
+00118C  1  85 ED                STA PLOC+1
+00118E  1               ;118E:DO E4 687
+00118E  1  D0 E4                BNE LOOP2       ;GOTO
+001190  1               ;1190:AD 41 OD 688
+001190  1               UPALL:
+001190  1  AD 41 0D             LDA POSFL       ;BOTTOM LINE CLEA
+001193  1               ;1193:48 689
+001193  1  48                   PHA
+001194  1               ;1194:A5 23 690
+001194  1  A5 23                LDA WNDBTM
+001196  1               ;1196:E9 01 691
+001196  1  E9 01                SBC #1
+001198  1               ;1198:A0 00 692
+001198  1  A0 00                LDY #0
+00119A  1               ;119A:8C 41 OD 693
+00119A  1  8C 41 0D             STY POSFL
+00119D  1               ;119D:20 C6 11 694
+00119D  1  20 C6 11             JSR HCLREOL1
+0011A0  1               ;11A0:68 695
+0011A0  1  68                   PLA
+0011A1  1               ;11A1:8D 41 OD 696
+0011A1  1  8D 41 0D             STA POSFL
+0011A4  1               ;11A4:60 697
+0011A4  1  60                   RTS
+0011A5  1               
+0011A5  1               ;11A5:A5 22 699
+0011A5  1               HIHOME:
+0011A5  1  A5 22                LDA WNDTOP      ;HI-GRAPHIC HOME
+0011A7  1               ;11A7:85 25 700
+0011A7  1  85 25                STA CV          ;FROM TOP
+0011A9  1               ;11A9:A0 00 701
+0011A9  1  A0 00                LDY #0
+0011AB  1               ;11AB:84 24 702
+0011AB  1  84 24                STY CH
+0011AD  1               ;11AD:F0 04 703
+0011AD  1  F0 04                BEQ HCLREOP1    ;GOTO
+0011AF  1               ;11AF:A4 24 705
+0011AF  1               HCLREOP:
+0011AF  1  A4 24                LDY CH          ;CLEAR END OF PAG
+0011B1  1               ;11B1:A5 25 706
+0011B1  1  A5 25                LDA CV
+0011B3  1               ;11B3:48 707
+0011B3  1               HCLREOP1:
+0011B3  1  48                   PHA
+0011B4  1               ;11B4:20 C6 11 708
+0011B4  1  20 C6 11             JSR HCLREOL1    ;CLEAR A LINE
+0011B7  1               ;11B7:68 709
+0011B7  1  68                   PLA
+0011B8  1               
+0011B8  1               ;11B8:18 710
+0011B8  1  18                   CLC
+0011B9  1               ;11B9:69 01 711
+0011B9  1  69 01                ADC #1
+0011BB  1               ;11BB:C5 23 712
+0011BB  1  C5 23                CMP WNDBTM
+0011BD  1               ;11BD:AO 00 713
+0011BD  1  A0 00                LDY #0
+0011BF  1               ;11BF:90 F2 714
+0011BF  1  90 F2                BCC HCLREOP1
+0011C1  1               ;11C1:60 715
+0011C1  1  60                   RTS
+0011C2  1               
+0011C2  1               ;11C2:A4 24 717
+0011C2  1               HCLREOL:
+0011C2  1  A4 24                LDY CH          ;CLEAR END OF LINE
+0011C4  1               ;11C4:A5 25 718
+0011C4  1  A5 25                LDA CV
+0011C6  1               ;11C6:84 EE 719
+0011C6  1               HCLREOL1:
+0011C6  1  84 EE                STY PATLOC
+0011C8  1               ;11C8:20 02 12 720
+0011C8  1  20 02 12             JSR BASCALC
+0011CB  1               ;11CB:A2 07 721
+0011CB  1  A2 07                LDX #7
+0011CD  1               ;11CD:AD 40 OD 722
+0011CD  1               LOOP3:
+0011CD  1  AD 40 0D             LDA INVFLG
+0011D0  1               ;11D0:2C 41 OD 723
+0011D0  1  2C 41 0D             BIT POSFL
+0011D3  1               ;11D3:10 15 724
+0011D3  1  10 15                BPL NO8
+0011D5  1               ;11D5:A5 2A 725
+0011D5  1  A5 2A                LDA BAS2L
+0011D7  1               ;11D7:85 EC 726
+0011D7  1  85 EC                STA PLOC
+0011D9  1               ;11D9:A5 2B 727
+0011D9  1  A5 2B                LDA BAS2L+1
+0011DB  1               ;11DB:4D 42 OD 728
+0011DB  1  4D 42 0D             EOR ADRFL
+0011DE  1               ;11DE:85 ED 729
+0011DE  1  85 ED                STA PLOC+1
+0011E0  1               ;11E0:B1 EC 730
+0011E0  1  B1 EC                LDA (PLOC),Y
+0011E2  1               ;11E2:2C 41 OD 731
+0011E2  1  2C 41 0D             BIT POSFL
+0011E5  1               ;11E5:50 03 732
+0011E5  1  50 03                BVC NO8
+0011E7  1               ;11E7:4D 40 OD 733
+0011E7  1  4D 40 0D             EOR INVFLG
+0011EA  1               ;11EA:91 2A 734
+0011EA  1               NO8:
+0011EA  1  91 2A                STA (BAS2L),Y
+0011EC  1               ;11EC:C8 735
+0011EC  1  C8                   INY
+0011ED  1               ;11ED:C4 21 736
+0011ED  1  C4 21                CPY WNDWDTH
+0011EF  1               ;11EF:90 DC 737
+0011EF  1  90 DC                BCC LOOP3
+0011F1  1               ;11F1:CA 738
+0011F1  1  CA                   DEX
+0011F2  1               ;11F2:30 0B 739
+0011F2  1  30 0B                BMI RTS7
+0011F4  1               ;11F4:A4 EE 740
+0011F4  1  A4 EE                LDY PATLOC
+0011F6  1               ;11F6:A5 2B 741
+0011F6  1  A5 2B                LDA BAS2L+1
+0011F8  1               ;11F8:18 742
+0011F8  1  18                   CLC
+0011F9  1               ;11F9:69 04 743
+0011F9  1  69 04                ADC #4
+0011FB  1               ;11FB:85 2B 744
+0011FB  1  85 2B                STA BAS2L+1
+0011FD  1               ;11FD:DO CE 745
+0011FD  1  D0 CE                BNE LOOP3
+0011FF  1               ;11FF:60 746
+0011FF  1               RTS7:
+0011FF  1  60                   RTS
+001200  1               
+001200  1               ;1200:A5 25 748
+001200  1               BASCALC1:
+001200  1  A5 25                LDA CV
+001202  1               
+001202  1               ;1202: 750 *****************************************************
+001202  1               ;1202: 751 *
+001202  1               ;1202: 752 * BASE CALCULATION:CV IN ACC.->BAS2L, +1
+001202  1               ;1202: 753 *
+001202  1               ;1202: 754 *****************************************************
+001202  1               
+001202  1               ;1202:4A 756
+001202  1               BASCALC:
+001202  1  4A                   LSR A           ;/2
+001203  1               ;1203:AA 757
+001203  1  AA                   TAX
+001204  1               ;1204:29 03 758
+001204  1  29 03                AND #3
+001206  1               ;1206:0D 3F OD 759
+001206  1  0D 3F 0D             ORA HGRAD
+001209  1               ;1209:85 2B 760
+001209  1  85 2B                STA BAS2L+1
+00120B  1               ;120B:BD 14 12 761
+00120B  1  BD 14 12             LDA BASETBL,X
+00120E  1               ;120E:6A 762
+00120E  1  6A                   ROR A
+00120F  1               ;120F:65 20 763
+00120F  1  65 20                ADC WNDLFT
+001211  1               ;1211:85 2A 764
+001211  1  85 2A                STA BAS2L
+001213  1               ;1213:60 765
+001213  1  60                   RTS
+001214  1               
+001214  1               ;1214:00 767
+001214  1               BASETBL:
+001214  1  00                   .byte $00         ;FOR 0,1
+001215  1               ;1215:00 768
+001215  1  00                   .byte $00         ;FOR 2,3
+001216  1               ;1216:00 769
+001216  1  00                   .byte $00         ;FOR 4,5
+001217  1               ;1217:00 770
+001217  1  00                   .byte $00         ;FOR 6, 7
+001218  1               ;1218:50 771
+001218  1  50                   .byte $50         ;FOR 8,9
+001219  1               ;1219:50 772
+001219  1  50                   .byte $50         ;FOR a,b
+00121A  1               ;121A:50 773
+00121A  1  50                   .byte $50         ;FOR c,d
+00121B  1               ;121B:50 774
+00121B  1  50                   .byte $50         ;FOR E,F
+00121C  1               ;121C:A0 775
+00121C  1  A0                   .byte $A0         ;FOR 10,11
+00121D  1               ;121D:AO 776
+00121D  1  A0                   .byte $A0         ;FOR 12,13
+00121E  1               ;121E:A0 777
+00121E  1  A0                   .byte $A0         ;FOR 14,15
+00121F  1               ;121F:A0 778
+00121F  1  A0                   .byte $A0         ;FOR 16,17
+001220  1               
+001220  1               ;1220:38 780
+001220  1               KOROUT:
+001220  1  38                   SEC
+001221  1               ;1221:E9 20 781
+001221  1  E9 20                SBC #$20        ;SUBTRACT BASE CODE
+001223  1               ;1223:AA 782
+001223  1  AA                   TAX
+001224  1               ;1224:BD DB 12 783
+001224  1  BD DB 12             LDA CONVTBL,X
+001227  1               ;1227:85 EF 784
+001227  1  85 EF                STA PATLOC+1
+001229  1               ;1229:BD 9B 12 785
+001229  1  BD 9B 12             LDA TYPETBL,X   ;GET CHR.TYPE
+00122C  1               ;122C:85 EE 786
+00122C  1  85 EE                STA PATLOC
+00122E  1               ;122E:20 57 0E 787
+00122E  1  20 57 0E             JSR TPSAVE
+001231  1               ;1231:AD 52 12 788
+001231  1  AD 52 12             LDA STATE
+001234  1               ;1234:0A 789
 001234  1  0A                   ASL A
-001235  1               ;1236:0A 791
-001235  1  0A                   ASL A           ;*8
-001236  1               ;1237:18 792
-001236  1  18                   CLC
-001237  1               ;1238:65 EE 793
-001237  1  65 EE                ADC PATLOC
-001239  1               ;123A:AA 794
-001239  1  AA                   TAX
-00123A  1               ;123B:BD 54 12 795
-00123A  1  BD 53 12             LDA PROCS+1,X
-00123D  1               ;123E:48 796
-00123D  1  48                   PHA
-00123E  1               ;123F:BD 53 12 797
-00123E  1  BD 52 12             LDA PROCS,X
-001241  1               ;1242:48 798
-001241  1  48                   PHA
-001242  1               ;1243:A5 EF 799
-001242  1  A5 EF                LDA PATLOC+1    ;ACC.=CODE
-001244  1               ;1245:60 800
-001244  1  60                   RTS
-001245  1               
-001245  1               ;1246: 802
-001245  1               TEMPCV:
-001245  1  xx                   .res 1
-001246  1               ;1247: 803
-001246  1               TEMPCH:
+001235  1               ;1235:0A 790
+001235  1  0A                   ASL A
+001236  1               ;1236:0A 791
+001236  1  0A                   ASL A           ;*8
+001237  1               ;1237:18 792
+001237  1  18                   CLC
+001238  1               ;1238:65 EE 793
+001238  1  65 EE                ADC PATLOC
+00123A  1               ;123A:AA 794
+00123A  1  AA                   TAX
+00123B  1               ;123B:BD 54 12 795
+00123B  1  BD 54 12             LDA PROCS+1,X
+00123E  1               ;123E:48 796
+00123E  1  48                   PHA
+00123F  1               ;123F:BD 53 12 797
+00123F  1  BD 53 12             LDA PROCS,X
+001242  1               ;1242:48 798
+001242  1  48                   PHA
+001243  1               ;1243:A5 EF 799
+001243  1  A5 EF                LDA PATLOC+1    ;ACC.=CODE
+001245  1               ;1245:60 800
+001245  1  60                   RTS
+001246  1               
+001246  1               ;1246: 802
+001246  1               TEMPCV:
 001246  1  xx                   .res 1
-001247  1               ;1248:00 804
-001247  1  00                   .byte $00
-001248  1               ;1249:00 805
+001247  1               ;1247: 803
+001247  1               TEMPCH:
+001247  1  xx                   .res 1
+001248  1               ;1248:00 804
 001248  1  00                   .byte $00
-001249  1               ;124A:00 806
-001249  1               P1239:
+001249  1               ;1249:00 805
 001249  1  00                   .byte $00
-00124A  1               ;124B:00 807
-00124A  1               P123A:
+00124A  1               ;124A:00 806
+00124A  1               P1239:
 00124A  1  00                   .byte $00
-00124B  1               ;124C:00 808
-00124B  1               P123B:
+00124B  1               ;124B:00 807
+00124B  1               P123A:
 00124B  1  00                   .byte $00
-00124C  1               
-00124C  1               ;124D:00 809
-00124C  1               P123C:
+00124C  1               ;124C:00 808
+00124C  1               P123B:
 00124C  1  00                   .byte $00
-00124D  1               ;124E:00 810
-00124D  1               P123D:
+00124D  1               
+00124D  1               ;124D:00 809
+00124D  1               P123C:
 00124D  1  00                   .byte $00
-00124E  1               ;124F:00 811
-00124E  1               P123E:
+00124E  1               ;124E:00 810
+00124E  1               P123D:
 00124E  1  00                   .byte $00
-00124F  1               ;1250:00 812
-00124F  1               P123F:
+00124F  1               ;124F:00 811
+00124F  1               P123E:
 00124F  1  00                   .byte $00
-001250  1               ;1251:00 813
-001250  1               P1240:
+001250  1               ;1250:00 812
+001250  1               P123F:
 001250  1  00                   .byte $00
-001251  1               ;1252:00 814
-001251  1               STATE:
-001251  1  00                   .byte $00         ;AUTOMATA STATE
-001252  1               
-001252  1               ;1253: 816 ***********************
-001252  1               ;1253: 817 *
-001252  1               ;1253: 818 * KOREAN PROCESSING PROCEDURE
-001252  1               ;1253: 819 * ON CONSONANT
-001252  1               ;1253: 820 * ON VERT.VOWEL
-001252  1               ;1253: 821 * ON HOR.VOWEL
-001252  1               ;1253: 822 * ON SYMBOL
-001252  1               ;1253: 823 *
-001252  1               ;1253: 824 **************************
-001252  1               
-001252  1               ;1253:2E 13 826
-001252  1               PROCS:
-001252  1  2D 13                .word ST0C-1
-001254  1               ;1255:36 13 827
-001254  1  35 13                .word ST0VV-1
-001256  1               ;1257:3C 13 828
-001256  1  3B 13                .word ST0HV-1
-001258  1               ;1259:42 13 829
-001258  1  41 13                .word ST0S-1
-00125A  1               
-00125A  1               ;125B:4D 13 831
-00125A  1  4C 13                .word ST1CS-1
-00125C  1               ;125D:53 13 832
-00125C  1  52 13                .word ST1VV-1
-00125E  1               ;125F:5B 13 833
-00125E  1  5A 13                .word ST1HV-1
-001260  1               ;1261:40 13 834
-001260  1  4C 13                .word ST1CS-1
-001262  1               
-001262  1               ;1263:63 13 836
-001262  1  62 13                .word ST25C-1
-001264  1               ;1265:6B 13 837
-001264  1  6A 13                .word ST25VV-1
-001266  1               ;1267:71 13 838
-001266  1  70 13                .word ST2HV-1
-001268  1               ;1269:79 13 839
-001268  1  78 13                .word ST25S-1
-00126A  1               
-00126A  1               ;126B:87 13 841
-00126A  1  86 13                .word ST3C-1
-00126C  1               ;126D:8F 13 842
-00126C  1  8E 13                .word ST3VV-1
-00126E  1               ;126F:4D 13 843
-00126E  1  4C 13                .word ST1CS-1
-001270  1               ;1271:97 13 844
-001270  1  96 13                .word ST3S-1
-001272  1               
-001272  1               ;1273:A2 13 846
-001272  1  A1 13                .word ST4C-1
-001274  1               ;1275:B8 13 847
-001274  1  B7 13                .word ST47VV-1
-001276  1               ;1277:C3 13 848
-001276  1  C2 13                .word ST47HV-1
-001278  1               ;1279:CE 13 849
-001278  1  CD 13                .word ST4S-1
-00127A  1               
-00127A  1               ;127B:63 13 851
-00127A  1  62 13                .word ST25C-1
-00127C  1               ;127D:6B 13 852
-00127C  1  6A 13                .word ST25VV-1
-00127E  1               ;127F:6B 13 853
-00127E  1  6A 13                .word ST25VV-1
-001280  1               ;1281:79 13 854
-001280  1  78 13                .word ST25S-1
-001282  1               
-001282  1               ;1283:DF 13 856
-001282  1  DE 13                .word ST6C-1
-001284  1               ;1285:F2 13 857
-001284  1  F1 13                .word ST68VV-1
-001286  1               ;1287:FD 13 858
-001286  1  FC 13                .word ST68HV-1
-001288  1               ;1289:08 14 859
-001288  1  07 14                .word ST6S-1
-00128A  1               
-00128A  1               ;128B:16 14 861
-00128A  1  15 14                .word ST7C-1
-00128C  1               ;128D:B8 13 862
-00128C  1  B7 13                .word ST47VV-1
-00128E  1               ;128F:C3 13 863
-00128E  1  C2 13                .word ST47HV-1
-001290  1               ;1291:29 14 864
-001290  1  28 14                .word ST7S-1
-001292  1               
-001292  1               ;1293:3C 14 866
-001292  1  3B 14                .word ST8C-1
-001294  1               ;1295:F2 13 867
-001294  1  F1 13                .word ST68VV-1
-001296  1               ;1297:FD 13 868
-001296  1  FC 13                .word ST68HV-1
-001298  1               ;1299:34 14 869
-001298  1  33 14                .word ST8S-1
-00129A  1               
-00129A  1               ;129B: 871 ******************************
-00129A  1               ;129B: 872 *
-00129A  1               ;129B: 873 * CHR.TYPE TABLE: (0):CONSONANT
-00129A  1               ;129B: 874 * (2) : VERT.VOWEL
-00129A  1               ;129B: 875 * (4) :HOR.VOWEL
-00129A  1               ;129B: 876 * (6):SYMBOL,NUMERICS
-00129A  1               ;129B: 877 *
-00129A  1               ;129B: 878 ****************************
-00129A  1               
-00129A  1               ;129B:06 880
-00129A  1               TYPETBL:
-00129A  1  06                   .byte $06         ;SPC.
-00129B  1               ;129C:06 881
-00129B  1  06                   .byte $06         ;!
-00129C  1               ;129D:06 882
-00129C  1  06                   .byte $06         ;"
-00129D  1               ;129E:06 883
-00129D  1  06                   .byte $06         ;#
-00129E  1               ;129F:06 884
-00129E  1  06                   .byte $06         ;$
-00129F  1               ;12AO:06 885
-00129F  1  06                   .byte $06         ;%
-0012A0  1               ;12A1:06 886
-0012A0  1  06                   .byte $06         ;&
-0012A1  1               ;12A2:06 887
-0012A1  1  06                   .byte $06         ;'
-0012A2  1               ;12A3:06 888
-0012A2  1  06                   .byte $06         ;{
-0012A3  1               ;12A4:06 889
-0012A3  1  06                   .byte $06         ;}
-0012A4  1               ;12A5:00 890
-0012A4  1  00                   .byte $00         ;+(DBL.CON.1)
-0012A5  1               ;12A6:02 891
-0012A5  1  02                   .byte $02         ;+(K.V.YE)
-0012A6  1               ;12A7:06 892
-0012A6  1  06                   .byte $06         ;,
-0012A7  1               ;12A8:00 893
-0012A7  1  00                   .byte $00         ;-(DBL.CON.2)
-0012A8  1               ;12A9:06 894
-0012A8  1  06                   .byte $06         ;.
-0012A9  1               ;12AA:06 895
-0012A9  1  06                   .byte $06         ;/
-0012AA  1               ;12AB:06 06 06 896
-0012AA  1  06 06 06 06          .byte $06,$06,$06,$06,$06 ;0,1,2,3,4
-0012AE  1  06           
-0012AF  1               ;12AE:06 06
-0012AF  1               ;12B0:06 06 06 897
-0012AF  1  06 06 06 06          .byte $06,$06,$06,$06,$06 ;5,6,7,8,9
-0012B3  1  06           
-0012B4  1               ;12B3:06 06
-0012B4  1               ;12B5:06 898
-0012B4  1  06                   .byte $06         ;:
-0012B5  1               ;12B6:02 899
-0012B5  1  02                   .byte $02         ;;(K.V.YAE)
-0012B6  1               ;12B7:00 900
-0012B6  1  00                   .byte $00         ;<(DBL.CON.3)
-0012B7  1               ;12B8:00 901
-0012B7  1  00                   .byte $00         ;=(DBL.CON.4)
-0012B8  1               ;12B9:00 902
-0012B8  1  00                   .byte $00         ;>(DBL.CON.5)
-0012B9  1               ;12BA:06 06 903
-0012B9  1  06 06                .byte $06,$06 ;?,@
-0012BB  1               ;12BC:00 904
-0012BB  1  00                   .byte $00         ;A(CON.)
-0012BC  1               ;12BD:04 905
-0012BC  1  04                   .byte $04         ;B(K.V.YOO)
-0012BD  1               ;12BE:00 906
-0012BD  1  00                   .byte $00         ;C(CON.)
-0012BE  1               ;12BF:00 907
-0012BE  1  00                   .byte $00         ;D(CON.)
-0012BF  1               ;12C0:00 908
-0012BF  1  00                   .byte $00         ;E(CON.)
-0012C0  1               ;12C1:00 909
-0012C0  1  00                   .byte $00         ;F(CON.)
-0012C1  1               ;12C2:00 910
-0012C1  1  00                   .byte $00         ;G(CON.)
-0012C2  1               ;12C3:04 911
-0012C2  1  04                   .byte $04         ;H(K.V.O)
-0012C3  1               ;12C4:02 912
-0012C3  1  02                   .byte $02         ;I(K.V.YA)
-0012C4  1               ;12C5:02 913
-0012C4  1  02                   .byte $02         ;J(K.V.EO)
-0012C5  1               ;12C6:02 914
-0012C5  1  02                   .byte $02         ;K(K.V.A)
-0012C6  1               ;12C7:02 915
-0012C6  1  02                   .byte $02         ;L(K.V.YEE)
-0012C7  1               ;12C8:04 916
-0012C7  1  04                   .byte $04         ;M(K.V.EU)
-0012C8  1               ;12C9:04 917
-0012C8  1  04                   .byte $04         ;N(K.V.WOO)
-0012C9  1               ;12CA:02 918
-0012C9  1  02                   .byte $02         ;0(K.V.AE)
-0012CA  1               ;12CB:02 919
-0012CA  1  02                   .byte $02         ;P(K. V.E)
-0012CB  1               ;12CC:00 920
-0012CB  1  00                   .byte $00         ;Q(CON.)
-0012CC  1               ;12CD:00 921
-0012CC  1  00                   .byte $00         ;R(CON.)
-0012CD  1               ;12CE:00 922
-0012CD  1  00                   .byte $00         ;S(CON.)
-0012CE  1               ;12CF:00 923
-0012CE  1  00                   .byte $00         ;T(CON.)
-0012CF  1               ;12D0:02 924
-0012CF  1  02                   .byte $02         ;U(K.V.YEO)
-0012D0  1               ;12D1:00 925
-0012D0  1  00                   .byte $00         ;V(CON.)
-0012D1  1               ;12D2:00 926
-0012D1  1  00                   .byte $00         ;W(CON.)
-0012D2  1               ;12D3:00 927
-0012D2  1  00                   .byte $00         ;X(CON.)
-0012D3  1               ;12D4:04 928
-0012D3  1  04                   .byte $04         ;Y(K.V.YO)
-0012D4  1               ;12D5:00 929
-0012D4  1  00                   .byte $00         ;Z(CON.)
-0012D5  1               ;12D6:06 930
-0012D5  1  06                   .byte $06         ;LEFT SQB
-0012D6  1               ;1207:06 931
-0012D6  1  06                   .byte $06         ;INV SLSH
-0012D7  1               ;12D8:06 932
-0012D7  1  06                   .byte $06         ;RIGHT SQB
-0012D8  1               ;12D9:06 933
-0012D8  1  06                   .byte $06         ;^
-0012D9  1               ;12DA:06 934
-0012D9  1  06                   .byte $06
-0012DA  1               
-0012DA  1               
-0012DA  1               ;12DB: 936 ************************
-0012DA  1               ;12DB: 937 *
-0012DA  1               ;12DB: 938 * CODE CONVERSION TABLE
-0012DA  1               ;12DB: 939 *
-0012DA  1               ;12DB: 940 ************************
-0012DA  1               
-0012DA  1               ;12DB:20 21 22 942
-0012DA  1               CONVTBL:
-0012DA  1  20 21 22 23          .byte $20,$21,$22,$23
-0012DE  1               ;12DE:23
-0012DE  1               ;12DF:24 25 26 943
-0012DE  1  24 25 26 27          .byte $24,$25,$26,$27
-0012E2  1               ;12E2:27
-0012E2  1               ;12E3:28 29 66 944
-0012E2  1  28 29 66 78          .byte $28,$29,$66,$78
-0012E6  1               ;12E6:78
-0012E6  1               ;12E7:2C 5F 2E 945
-0012E6  1  2C 5F 2E 2F          .byte $2C,$5F,$2E,$2F
-0012EA  1               ;12EA:2F
-0012EA  1               ;12EB:30 31 32 946
-0012EA  1  30 31 32 33          .byte $30,$31,$32,$33
-0012EE  1               ;12EE:33
-0012EE  1               ;12EF:34 35 36 947
-0012EE  1  34 35 36 37          .byte $34,$35,$36,$37
-0012F2  1               ;12F2:37
-0012F2  1               ;12F3:38 39 5C 948
-0012F2  1  38 39 5C 74          .byte $38,$39,$5C,$74
-0012F6  1               ;12F6:74
-0012F6  1               ;12F7:68 62 6B 949
-0012F6  1  68 62 6B 3F          .byte $68,$62,$6B,$3F
-0012FA  1               ;12FA:3F
-0012FA  1               ;12FB:40 64 7C 950
-0012FA  1  40 64 7C 6C          .byte $40,$64,$7C,$6C
-0012FE  1               ;12FE:6C
-0012FE  1               ;12FF:69 61 63 951
-0012FE  1  69 61 63 70          .byte $69,$61,$63,$70
-001302  1               ;1302:70
-001302  1               ;1303:79 73 75 952
-001302  1  79 73 75 71          .byte $79,$73,$75,$71
-001306  1               ;1306:71
-001306  1               ;1307:7E 7D 7B 953
-001306  1  7E 7D 7B 72          .byte $7E,$7D,$7B,$72
-00130A  1               ;130A:72
-00130A  1               ;130B:76 65 5E 954
-00130A  1  76 65 5E 60          .byte $76,$65,$5E,$60
-00130E  1               ;130E:60
-00130E  1               ;130F:67 77 6F 955
-00130E  1  67 77 6F 6A          .byte $67,$77,$6F,$6A
-001312  1               ;1312:6A
-001312  1               ;1313:6E 7A 6D 956
-001312  1  6E 7A 6D 5B          .byte $6E,$7A,$6D,$5B
-001316  1               ;1316:5B
-001316  1               ;1317:5C 5D 5E 957
-001316  1  5C 5D 5E 5F          .byte $5C,$5D,$5E,$5F
-00131A  1               ;131A:5F
-00131A  1               
-00131A  1               
-00131A  1               ;131B: 959 *******************************
-00131A  1               ;131B: 960 * COMPLEX CONSONANT I.D. LISTS
-00131A  1               ;131B: 961 * IF 0,CANNOT BE COMBINED!
-00131A  1               ;131B: 962 * IF NOT 0,ENTRY IS NEW CODE
-00131A  1               ;131B: 963 *
-00131A  1               ;131B: 964 *******************************
-00131A  1               
-00131A  1               ;131B:00 966
-00131A  1               CPLXCN:
-00131A  1  00                   .byte $00
-00131B  1               ;131C:12 967
-00131B  1  12                   .byte $12
-00131C  1               ;131D:00 968
-00131C  1  00                   .byte $00
-00131D  1               ;131E:00 969
+001251  1               ;1251:00 813
+001251  1               P1240:
+001251  1  00                   .byte $00
+001252  1               ;1252:00 814
+001252  1               STATE:
+001252  1  00                   .byte $00         ;AUTOMATA STATE
+001253  1               
+001253  1               ;1253: 816 ***********************
+001253  1               ;1253: 817 *
+001253  1               ;1253: 818 * KOREAN PROCESSING PROCEDURE
+001253  1               ;1253: 819 * ON CONSONANT
+001253  1               ;1253: 820 * ON VERT.VOWEL
+001253  1               ;1253: 821 * ON HOR.VOWEL
+001253  1               ;1253: 822 * ON SYMBOL
+001253  1               ;1253: 823 *
+001253  1               ;1253: 824 **************************
+001253  1               
+001253  1               ;1253:2E 13 826
+001253  1               PROCS:
+001253  1  2E 13                .word ST0C-1
+001255  1               ;1255:36 13 827
+001255  1  36 13                .word ST0VV-1
+001257  1               ;1257:3C 13 828
+001257  1  3C 13                .word ST0HV-1
+001259  1               ;1259:42 13 829
+001259  1  42 13                .word ST0S-1
+00125B  1               
+00125B  1               ;125B:4D 13 831
+00125B  1  4D 13                .word ST1CS-1
+00125D  1               ;125D:53 13 832
+00125D  1  53 13                .word ST1VV-1
+00125F  1               ;125F:5B 13 833
+00125F  1  5B 13                .word ST1HV-1
+001261  1               ;1261:40 13 834
+001261  1  4D 13                .word ST1CS-1
+001263  1               
+001263  1               ;1263:63 13 836
+001263  1  63 13                .word ST25C-1
+001265  1               ;1265:6B 13 837
+001265  1  6B 13                .word ST25VV-1
+001267  1               ;1267:71 13 838
+001267  1  71 13                .word ST2HV-1
+001269  1               ;1269:79 13 839
+001269  1  79 13                .word ST25S-1
+00126B  1               
+00126B  1               ;126B:87 13 841
+00126B  1  87 13                .word ST3C-1
+00126D  1               ;126D:8F 13 842
+00126D  1  8F 13                .word ST3VV-1
+00126F  1               ;126F:4D 13 843
+00126F  1  4D 13                .word ST1CS-1
+001271  1               ;1271:97 13 844
+001271  1  97 13                .word ST3S-1
+001273  1               
+001273  1               ;1273:A2 13 846
+001273  1  A2 13                .word ST4C-1
+001275  1               ;1275:B8 13 847
+001275  1  B8 13                .word ST47VV-1
+001277  1               ;1277:C3 13 848
+001277  1  C3 13                .word ST47HV-1
+001279  1               ;1279:CE 13 849
+001279  1  CE 13                .word ST4S-1
+00127B  1               
+00127B  1               ;127B:63 13 851
+00127B  1  63 13                .word ST25C-1
+00127D  1               ;127D:6B 13 852
+00127D  1  6B 13                .word ST25VV-1
+00127F  1               ;127F:6B 13 853
+00127F  1  6B 13                .word ST25VV-1
+001281  1               ;1281:79 13 854
+001281  1  79 13                .word ST25S-1
+001283  1               
+001283  1               ;1283:DF 13 856
+001283  1  DF 13                .word ST6C-1
+001285  1               ;1285:F2 13 857
+001285  1  F2 13                .word ST68VV-1
+001287  1               ;1287:FD 13 858
+001287  1  FD 13                .word ST68HV-1
+001289  1               ;1289:08 14 859
+001289  1  08 14                .word ST6S-1
+00128B  1               
+00128B  1               ;128B:16 14 861
+00128B  1  16 14                .word ST7C-1
+00128D  1               ;128D:B8 13 862
+00128D  1  B8 13                .word ST47VV-1
+00128F  1               ;128F:C3 13 863
+00128F  1  C3 13                .word ST47HV-1
+001291  1               ;1291:29 14 864
+001291  1  29 14                .word ST7S-1
+001293  1               
+001293  1               ;1293:3C 14 866
+001293  1  3C 14                .word ST8C-1
+001295  1               ;1295:F2 13 867
+001295  1  F2 13                .word ST68VV-1
+001297  1               ;1297:FD 13 868
+001297  1  FD 13                .word ST68HV-1
+001299  1               ;1299:34 14 869
+001299  1  34 14                .word ST8S-1
+00129B  1               
+00129B  1               ;129B: 871 ******************************
+00129B  1               ;129B: 872 *
+00129B  1               ;129B: 873 * CHR.TYPE TABLE: (0):CONSONANT
+00129B  1               ;129B: 874 * (2) : VERT.VOWEL
+00129B  1               ;129B: 875 * (4) :HOR.VOWEL
+00129B  1               ;129B: 876 * (6):SYMBOL,NUMERICS
+00129B  1               ;129B: 877 *
+00129B  1               ;129B: 878 ****************************
+00129B  1               
+00129B  1               ;129B:06 880
+00129B  1               TYPETBL:
+00129B  1  06                   .byte $06         ;SPC.
+00129C  1               ;129C:06 881
+00129C  1  06                   .byte $06         ;!
+00129D  1               ;129D:06 882
+00129D  1  06                   .byte $06         ;"
+00129E  1               ;129E:06 883
+00129E  1  06                   .byte $06         ;#
+00129F  1               ;129F:06 884
+00129F  1  06                   .byte $06         ;$
+0012A0  1               ;12AO:06 885
+0012A0  1  06                   .byte $06         ;%
+0012A1  1               ;12A1:06 886
+0012A1  1  06                   .byte $06         ;&
+0012A2  1               ;12A2:06 887
+0012A2  1  06                   .byte $06         ;'
+0012A3  1               ;12A3:06 888
+0012A3  1  06                   .byte $06         ;{
+0012A4  1               ;12A4:06 889
+0012A4  1  06                   .byte $06         ;}
+0012A5  1               ;12A5:00 890
+0012A5  1  00                   .byte $00         ;+(DBL.CON.1)
+0012A6  1               ;12A6:02 891
+0012A6  1  02                   .byte $02         ;+(K.V.YE)
+0012A7  1               ;12A7:06 892
+0012A7  1  06                   .byte $06         ;,
+0012A8  1               ;12A8:00 893
+0012A8  1  00                   .byte $00         ;-(DBL.CON.2)
+0012A9  1               ;12A9:06 894
+0012A9  1  06                   .byte $06         ;.
+0012AA  1               ;12AA:06 895
+0012AA  1  06                   .byte $06         ;/
+0012AB  1               ;12AB:06 06 06 896
+0012AB  1  06 06 06 06          .byte $06,$06,$06,$06,$06 ;0,1,2,3,4
+0012AF  1  06           
+0012B0  1               ;12AE:06 06
+0012B0  1               ;12B0:06 06 06 897
+0012B0  1  06 06 06 06          .byte $06,$06,$06,$06,$06 ;5,6,7,8,9
+0012B4  1  06           
+0012B5  1               ;12B3:06 06
+0012B5  1               ;12B5:06 898
+0012B5  1  06                   .byte $06         ;:
+0012B6  1               ;12B6:02 899
+0012B6  1  02                   .byte $02         ;;(K.V.YAE)
+0012B7  1               ;12B7:00 900
+0012B7  1  00                   .byte $00         ;<(DBL.CON.3)
+0012B8  1               ;12B8:00 901
+0012B8  1  00                   .byte $00         ;=(DBL.CON.4)
+0012B9  1               ;12B9:00 902
+0012B9  1  00                   .byte $00         ;>(DBL.CON.5)
+0012BA  1               ;12BA:06 06 903
+0012BA  1  06 06                .byte $06,$06 ;?,@
+0012BC  1               ;12BC:00 904
+0012BC  1  00                   .byte $00         ;A(CON.)
+0012BD  1               ;12BD:04 905
+0012BD  1  04                   .byte $04         ;B(K.V.YOO)
+0012BE  1               ;12BE:00 906
+0012BE  1  00                   .byte $00         ;C(CON.)
+0012BF  1               ;12BF:00 907
+0012BF  1  00                   .byte $00         ;D(CON.)
+0012C0  1               ;12C0:00 908
+0012C0  1  00                   .byte $00         ;E(CON.)
+0012C1  1               ;12C1:00 909
+0012C1  1  00                   .byte $00         ;F(CON.)
+0012C2  1               ;12C2:00 910
+0012C2  1  00                   .byte $00         ;G(CON.)
+0012C3  1               ;12C3:04 911
+0012C3  1  04                   .byte $04         ;H(K.V.O)
+0012C4  1               ;12C4:02 912
+0012C4  1  02                   .byte $02         ;I(K.V.YA)
+0012C5  1               ;12C5:02 913
+0012C5  1  02                   .byte $02         ;J(K.V.EO)
+0012C6  1               ;12C6:02 914
+0012C6  1  02                   .byte $02         ;K(K.V.A)
+0012C7  1               ;12C7:02 915
+0012C7  1  02                   .byte $02         ;L(K.V.YEE)
+0012C8  1               ;12C8:04 916
+0012C8  1  04                   .byte $04         ;M(K.V.EU)
+0012C9  1               ;12C9:04 917
+0012C9  1  04                   .byte $04         ;N(K.V.WOO)
+0012CA  1               ;12CA:02 918
+0012CA  1  02                   .byte $02         ;0(K.V.AE)
+0012CB  1               ;12CB:02 919
+0012CB  1  02                   .byte $02         ;P(K. V.E)
+0012CC  1               ;12CC:00 920
+0012CC  1  00                   .byte $00         ;Q(CON.)
+0012CD  1               ;12CD:00 921
+0012CD  1  00                   .byte $00         ;R(CON.)
+0012CE  1               ;12CE:00 922
+0012CE  1  00                   .byte $00         ;S(CON.)
+0012CF  1               ;12CF:00 923
+0012CF  1  00                   .byte $00         ;T(CON.)
+0012D0  1               ;12D0:02 924
+0012D0  1  02                   .byte $02         ;U(K.V.YEO)
+0012D1  1               ;12D1:00 925
+0012D1  1  00                   .byte $00         ;V(CON.)
+0012D2  1               ;12D2:00 926
+0012D2  1  00                   .byte $00         ;W(CON.)
+0012D3  1               ;12D3:00 927
+0012D3  1  00                   .byte $00         ;X(CON.)
+0012D4  1               ;12D4:04 928
+0012D4  1  04                   .byte $04         ;Y(K.V.YO)
+0012D5  1               ;12D5:00 929
+0012D5  1  00                   .byte $00         ;Z(CON.)
+0012D6  1               ;12D6:06 930
+0012D6  1  06                   .byte $06         ;LEFT SQB
+0012D7  1               ;1207:06 931
+0012D7  1  06                   .byte $06         ;INV SLSH
+0012D8  1               ;12D8:06 932
+0012D8  1  06                   .byte $06         ;RIGHT SQB
+0012D9  1               ;12D9:06 933
+0012D9  1  06                   .byte $06         ;^
+0012DA  1               ;12DA:06 934
+0012DA  1  06                   .byte $06
+0012DB  1               
+0012DB  1               
+0012DB  1               ;12DB: 936 ************************
+0012DB  1               ;12DB: 937 *
+0012DB  1               ;12DB: 938 * CODE CONVERSION TABLE
+0012DB  1               ;12DB: 939 *
+0012DB  1               ;12DB: 940 ************************
+0012DB  1               
+0012DB  1               ;12DB:20 21 22 942
+0012DB  1               CONVTBL:
+0012DB  1  20 21 22 23          .byte $20,$21,$22,$23
+0012DF  1               ;12DE:23
+0012DF  1               ;12DF:24 25 26 943
+0012DF  1  24 25 26 27          .byte $24,$25,$26,$27
+0012E3  1               ;12E2:27
+0012E3  1               ;12E3:28 29 66 944
+0012E3  1  28 29 66 78          .byte $28,$29,$66,$78
+0012E7  1               ;12E6:78
+0012E7  1               ;12E7:2C 5F 2E 945
+0012E7  1  2C 5F 2E 2F          .byte $2C,$5F,$2E,$2F
+0012EB  1               ;12EA:2F
+0012EB  1               ;12EB:30 31 32 946
+0012EB  1  30 31 32 33          .byte $30,$31,$32,$33
+0012EF  1               ;12EE:33
+0012EF  1               ;12EF:34 35 36 947
+0012EF  1  34 35 36 37          .byte $34,$35,$36,$37
+0012F3  1               ;12F2:37
+0012F3  1               ;12F3:38 39 5C 948
+0012F3  1  38 39 5C 74          .byte $38,$39,$5C,$74
+0012F7  1               ;12F6:74
+0012F7  1               ;12F7:68 62 6B 949
+0012F7  1  68 62 6B 3F          .byte $68,$62,$6B,$3F
+0012FB  1               ;12FA:3F
+0012FB  1               ;12FB:40 64 7C 950
+0012FB  1  40 64 7C 6C          .byte $40,$64,$7C,$6C
+0012FF  1               ;12FE:6C
+0012FF  1               ;12FF:69 61 63 951
+0012FF  1  69 61 63 70          .byte $69,$61,$63,$70
+001303  1               ;1302:70
+001303  1               ;1303:79 73 75 952
+001303  1  79 73 75 71          .byte $79,$73,$75,$71
+001307  1               ;1306:71
+001307  1               ;1307:7E 7D 7B 953
+001307  1  7E 7D 7B 72          .byte $7E,$7D,$7B,$72
+00130B  1               ;130A:72
+00130B  1               ;130B:76 65 5E 954
+00130B  1  76 65 5E 60          .byte $76,$65,$5E,$60
+00130F  1               ;130E:60
+00130F  1               ;130F:67 77 6F 955
+00130F  1  67 77 6F 6A          .byte $67,$77,$6F,$6A
+001313  1               ;1312:6A
+001313  1               ;1313:6E 7A 6D 956
+001313  1  6E 7A 6D 5B          .byte $6E,$7A,$6D,$5B
+001317  1               ;1316:5B
+001317  1               ;1317:5C 5D 5E 957
+001317  1  5C 5D 5E 5F          .byte $5C,$5D,$5E,$5F
+00131B  1               ;131A:5F
+00131B  1               
+00131B  1               
+00131B  1               ;131B: 959 *******************************
+00131B  1               ;131B: 960 * COMPLEX CONSONANT I.D. LISTS
+00131B  1               ;131B: 961 * IF 0,CANNOT BE COMBINED!
+00131B  1               ;131B: 962 * IF NOT 0,ENTRY IS NEW CODE
+00131B  1               ;131B: 963 *
+00131B  1               ;131B: 964 *******************************
+00131B  1               
+00131B  1               ;131B:00 966
+00131B  1               CPLXCN:
+00131B  1  00                   .byte $00
+00131C  1               ;131C:12 967
+00131C  1  12                   .byte $12
+00131D  1               ;131D:00 968
 00131D  1  00                   .byte $00
-00131E  1               ;131F:00 970
+00131E  1               ;131E:00 969
 00131E  1  00                   .byte $00
-00131F  1               ;1320:0F 971
-00131F  1  0F                   .byte $0F
-001320  1               ;1321:00 972
-001320  1  00                   .byte $00
-001321  1               ;1322:13 973
-001321  1  13                   .byte $13
-001322  1               ;1323:14 974
-001322  1  14                   .byte $14
-001323  1               ;1324:10 975
-001323  1  10                   .byte $10
-001324  1               ;1325:15 976
-001324  1  15                   .byte $15
-001325  1               ;1326:00 977
-001325  1  00                   .byte $00
-001326  1               ;1327:19 978
-001326  1  19                   .byte $19
-001327  1               ;1328:00 979
-001327  1  00                   .byte $00
-001328  1               ;1329:00 980
+00131F  1               ;131F:00 970
+00131F  1  00                   .byte $00
+001320  1               ;1320:0F 971
+001320  1  0F                   .byte $0F
+001321  1               ;1321:00 972
+001321  1  00                   .byte $00
+001322  1               ;1322:13 973
+001322  1  13                   .byte $13
+001323  1               ;1323:14 974
+001323  1  14                   .byte $14
+001324  1               ;1324:10 975
+001324  1  10                   .byte $10
+001325  1               ;1325:15 976
+001325  1  15                   .byte $15
+001326  1               ;1326:00 977
+001326  1  00                   .byte $00
+001327  1               ;1327:19 978
+001327  1  19                   .byte $19
+001328  1               ;1328:00 979
 001328  1  00                   .byte $00
-001329  1               ;132A:00 981
+001329  1               ;1329:00 980
 001329  1  00                   .byte $00
-00132A  1               ;132B:11 982
-00132A  1  11                   .byte $11
-00132B  1               ;132C:16 983
-00132B  1  16                   .byte $16
-00132C  1               ;132D:17 984
-00132C  1  17                   .byte $17
-00132D  1               ;132E:18 985
-00132D  1  18                   .byte $18
-00132E  1               
-00132E  1               
-00132E  1               ;132F:20 4E 14 987
-00132E  1               ST0C:
-00132E  1  20 4D 14             JSR WASIN1      ;CON IN ACC.OUT
-001331  1               ;1332:A9 01 988
-001331  1  A9 01                LDA #1          ;NEXT STATE
-001333  1               ;1334:4C 4A 14 989
-001333  1  4C 49 14             JMP CONTPRO
-001336  1               
-001336  1               ;1337:20 FF 14 991
-001336  1               ST0VV:
-001336  1  20 FE 14             JSR VVDSP       ;V.V.DISP.
-001339  1               ;133A:4C E8 15 992
-001339  1  4C E7 15             JMP ESFTFB1     ;BEEP&CLEAR COND.BF.ALL!
-00133C  1               
-00133C  1               ;133D:20 4E 14 994
-00133C  1               ST0HV:
-00133C  1  20 4D 14             JSR WASIN1      ;DISP.H.V AT UPPER
-00133F  1               
-00133F  1               ;1340:4C EB 15 995
-00133F  1  4C E7 15             JMP ESFTFB1     ;BEEP&CLEAR COND.BF. ALL!
-001342  1               ;1343:20 4E 14 997
-001342  1               ST0S:
-001342  1  20 4D 14             JSR WASIN1      ;CV,CH<-ACC:CV+1, CH<-BLANK
-001345  1               ;1346:20 6D 15 998
-001345  1  20 6C 15             JSR SFTFB1      ;SHIFT COND.BF. 1 TIME
-001348  1               ;1349:A9 00 999
-001348  1  A9 00                LDA #0          ;NEXT STATE
-00134A  1               ;134B:4C 4A 14 1000
-00134A  1  4C 49 14             JMP CONTPRO
-00134D  1               ;134E:20 59 14 1002
-00134D  1               ST1CS:
-00134D  1  20 58 14             JSR WASIN6      ;DISP.IT!
-001350  1               ;1351:4C F1 15 1003
-001350  1  4C F0 15             JMP ECONDCL1    ;BEEP&CLEAR COND. BF.ALL!
-001353  1               
-001353  1               ;1354:20 0A 15 1005
-001353  1               ST1VV:
-001353  1  20 09 15             JSR DISPVV      ;DISP V.V
-001356  1               ;1357:A9 02 1006
-001356  1  A9 02                LDA #2          ;NEXT STATE
-001358  1               ;1359:4C 4A 14 1007
-001358  1  4C 49 14             JMP CONTPRO
-00135B  1               
-00135B  1               ;135C:20 63 14 1009
-00135B  1               ST1HV:
-00135B  1  20 62 14             JSR WASIN3      ;H.V DISP. AT LOW C.V POS
-00135E  1               ;135F:A9 03 1010
-00135E  1  A9 03                LDA #3          ;NEXT STATE
-001360  1               ;1361:4C 4A 14 1011
-001360  1  4C 49 14             JMP CONTPRO
-001363  1               
-001363  1               ;1364:20 77 14 1013
-001363  1               ST25C:
-001363  1  20 76 14             JSR WASIN4      ;CHECK CH & DISP.C
-001366  1               ;1367:A9 04 1014
-001366  1  A9 04                LDA #4          ;NEXT STATE
-001368  1               ;1369:4C 4A 14 1015
-001368  1  4C 49 14             JMP CONTPRO
-00136B  1               
-00136B  1               ;136C:20 15 15 1017
-00136B  1               ST25VV:
-00136B  1  20 14 15             JSR DISPVV1     ;V.V DISP.
-00136E  1               ;136F:4C E5 15 1018
-00136E  1  4C E4 15             JMP ESFTFB3     ;BEEP&CLEAR
-001371  1               
-001371  1               ;1372:20 63 14 1020
-001371  1               ST2HV:
-001371  1  20 62 14             JSR WASIN3      ;H.V DISP.
-001374  1               ;1375:A9 05 1021
-001374  1  A9 05                LDA #5          ;NEXT STATE
-001376  1               ;1377:4C 4A 14 1022
-001376  1  4C 49 14             JMP CONTPRO
-001379  1               
-001379  1               ;137A:20 77 14 1024
-001379  1               ST25S:
-001379  1  20 76 14             JSR WASIN4      ;DISP.SYMBOL
-00137C  1               ;137D:20 AB 15 1025
-00137C  1  20 AA 15             JSR SFTFB2      ;ADJUST COND.BF
-00137F  1               ;1380:20 60 15 1026
-00137F  1  20 6C 15             JSR SFTFB1
-001382  1               ;1383:A9 00 1027
-001382  1  A9 00                LDA #0          ;NEXT STATE
-001384  1               ;1385:4C 4A 14 1028
-001384  1  4C 49 14             JMP CONTPRO
-001387  1               
-001387  1               ;1388:20 59 14 1030
-001387  1               ST3C:
-001387  1  20 58 14             JSR WASIN6      ;C DISP! $123A <-C
-00138A  1               ;138B:A9 06 1031
-00138A  1  A9 06                LDA #6          ;NEXT STATE
-00138C  1               ;138D:4C 4A 14 1032
-00138C  1  4C 49 14             JMP CONTPRO
-00138F  1               
-00138F  1               ;1390:20 0A 15 1034
-00138F  1               ST3VV:
-00138F  1  20 09 15             JSR DISPVV      ;V.V DISP&SET $123A,C WITH V.V
-001392  1               ;1393:A9 05 1035
-001392  1  A9 05                LDA #5          ;NEXT STATE
-001394  1               ;1395:4C 4A 14 1036
-001394  1  4C 49 14             JMP CONTPRO
-001397  1               
-001397  1               ;1398:20 59 14 1038
-001397  1               ST3S:
-001397  1  20 58 14             JSR WASIN6      ;DISP SYM& SET $123A WITH SYM
-00139A  1               ;139B:20 AB 15 1039
-00139A  1  20 AA 15             JSR SFTFB2      ;FONT BF2 - > BF1
-00139D  1               ;139E:A9 00 1040
-00139D  1  A9 00                LDA #0          ;NEXT STATE
-00139F  1               ;13AO:4C 4A 14 1041
-00139F  1  4C 49 14             JMP CONTPRO
-0013A2  1               ;13A3:48 1043
-0013A2  1               ST4C:
-0013A2  1  48                   PHA             ;C SAVE
-0013A3  1               ;13A4:20 2B 15 1044
-0013A3  1  20 2A 15             JSR MOVPOS
-0013A6  1               ;13A7:20 6B 14 1045
-0013A6  1  20 6A 14             JSR LOWBLK2     ;BLANK $123C
-0013A9  1               ;13AA:AD 4E 12 1046
-0013A9  1  AD 4D 12             LDA P123D       ;C OF 2ND - > C' OF 1ST
-0013AC  1               
-0013AC  1               ;13AD:20 63 14 1047
-0013AC  1  20 62 14             JSR WASIN3      ;P123D -> P123B& P123B DISP.
-0013AF  1               ;13B0:68 1048 i
-0013AF  1  68                   PLA             ;RESTORE C
-0013B0  1               ;13B1:20 77 14 1049
-0013B0  1  20 76 14             JSR WASIN4      ;DISP IT!& C-> P123D
-0013B3  1               ;13B4:A9 07 1050
-0013B3  1  A9 07                LDA #7          ;NEXT STATE
-0013B5  1               ;13B6:4C 4A 14 1051
-0013B5  1  4C 49 14             JMP CONTPRO
-0013B8  1               ;13B9:20 20 15 1053
-0013B8  1               ST47VV:
-0013B8  1  20 1F 15             JSR DISPVV2     ;V->P123E
-0013BB  1               ;13BC:20 AB 15 1054
-0013BB  1  20 AA 15             JSR SFTFB2      ;V.V^0F->P1240
-0013BE  1               ;13BF:A9 02 1055
-0013BE  1  A9 02                LDA #2          ;NEXT STATE
-0013C0  1               ;13C1:4C 4A 14 1056
-0013C0  1  4C 49 14             JMP CONTPRO
-0013C3  1               
-0013C3  1               ;13C4:20 B5 14 1058
-0013C3  1               ST47HV:
-0013C3  1  20 B4 14             JSR HVDSP        ;H.V - > P123F&DISP
-0013C6  1               ;13C7:20 AB 15 1059
-0013C6  1  20 AA 15             JSR SFTFB2      ;COND. B.F2->B.F.1& CLR BF2
-0013C9  1               ;13CA:A9 03 1060
-0013C9  1  A9 03                LDA #3          ;NEXT STATE
-0013CB  1               ;13CC:4C 4A 14 1061
-0013CB  1  4C 49 14             JMP CONTPRO
-0013CE  1               ;13CF:48 1063
-0013CE  1               ST4S:
-0013CE  1  48                   PHA             ;SYM.SAVE
-0013CF  1               ;13D0:20 2B 15 1064
-0013CF  1  20 2A 15             JSR MOVPOS
-0013D2  1               ;13D3:AD 4E 12 1065
-0013D2  1  AD 4D 12             LDA P123D       ;LOAD C OF 2ND.
-0013D5  1               ;13D6:20 63 14 1066
-0013D5  1  20 62 14             JSR WASIN3      ;P123D->P123B
-0013D8  1               ;13D9:20 6B 14 1067
-0013D8  1  20 6A 14             JSR LOWBLK2     ;P123C<-BLANK
-0013DB  1               ;13DC:68 1068
-0013DB  1  68                   PLA             ;RESTORE SYM.
-0013DC  1               ;13DD:4C 7A 13 1069
-0013DC  1  4C 79 13             JMP ST25S       ;DISP.SYMBOL
-0013DF  1               
-0013DF  1               ;13E0:48 1071
-0013DF  1               ST6C:
-0013DF  1  48                   PHA             ;SAVE C
-0013E0  1               ;13E1:20 2B 15 1072
-0013E0  1  20 2A 15             JSR MOVPOS      ;P123A<-P123B+P123A
-0013E3  1               ;13E4:AD 4B 12 1073
-0013E3  1  AD 4A 12             LDA P123A       ;GET C OF 2ND.
-0013E6  1               ;13E7:20 63 14 1074
-0013E6  1  20 62 14             JSR WASIN3      ;P123A->P123B
-0013E9  1               ;13EA:68 1075
-0013E9  1  68                   PLA             ;RESTORE C
-0013EA  1               ;13EB:20 59 14 1076
-0013EA  1  20 58 14             JSR WASIN6      ;DISP.IT(ACC. ->P123A
-0013ED  1               ;13EE:A9 08 1077
-0013ED  1  A9 08                LDA #8          ;NEXT STATE
-0013EF  1               ;13F0:4C 4A 14 1078
-0013EF  1  4C 49 14             JMP CONTPRO
-0013F2  1               
-0013F2  1               ;13F3:20 15 15 1080
-0013F2  1               ST68VV:
-0013F2  1  20 14 15             JSR DISPVV1     ;V.V DISP. (V. V ->P123D,V.V^OF->P123F
-0013F5  1               ;13F6:20 6D 15 1081
-0013F5  1  20 6C 15             JSR SFTFB1      ;SHFT COND.BF
-0013F8  1               ;13F9:A9 02 1082
-0013F8  1  A9 02                LDA #2          ;NEXT STATE
-0013FA  1               ;13FB:4C 4A 14 1083
-0013FA  1  4C 49 14             JMP CONTPRO
-0013FD  1               ;13FE:20 6D 14 1085
-0013FD  1               ST68HV:
-0013FD  1  20 6C 14             JSR HVDSP1      ;H. V->P123C
-001400  1               ;1401:20 60 15 1086
-001400  1  20 6C 15             JSR SFTFB1      ;SHFT COND.BF
-001403  1               ;1404:A9 03 1087
-001403  1  A9 03                LDA #3          ;NEXT STATE
-001405  1               ;1406:4C 4A 14 1088
-001405  1  4C 49 14             JMP CONTPRO
-001408  1               ;1409:48 1090
-001408  1               ST6S:
-001408  1  48                   PHA             ;SAVE SYMBOL
-001409  1               ;140A:20 2B 15 1091
-001409  1  20 2A 15             JSR MOVPOS      ;P123A<-P123A+ P123B(H.V)
-00140C  1               
-00140C  1               ;140D:AD 4B 12 1092
-00140C  1  AD 4A 12             LDA P123A       ;GET C OF 2ND.
-00140F  1               ;1410:20 63 14 1093
-00140F  1  20 62 14             JSR WASIN3      ;P123A->P123B
-001412  1               ;1413:68 1094
-001412  1  68                   PLA             ;RESTORE SYMBOL
-001413  1               ;1414:4C 98 13 1095
-001413  1  4C 97 13             JMP ST3S
-001416  1               
-001416  1               ;1417:48 1097
-001416  1               ST7C:
-001416  1  48                   PHA             ;SAVE C
-001417  1               ;1418:AD 4E 12 1098
-001417  1  AD 4D 12             LDA P123D       ;LOAD C OF 2ND.
-00141A  1               
-00141A  1               ;141B:20 6D 14 1099
-00141A  1  20 6C 14             JSR HVDSP1      ;->P123C
-00141D  1               ;141E:68 1100
-00141D  1  68                   PLA             ;RESTORE C
-00141E  1               ;141F:20 77 14 1101
-00141E  1  20 76 14             JSR WASIN4      ;->P123D
-001421  1               ;1422:20 AB 15 1102
-001421  1  20 AA 15             JSR SFTFB2      ;COND.BF2->B.F1
-001424  1               ;1425:A9 01 1103
-001424  1  A9 01                LDA #1          ;NEXT STATE
-001426  1               ;1427:4C 4A 14 1104
-001426  1  4C 49 14             JMP CONTPRO
-001429  1               
-001429  1               ;142A:48 1106
-001429  1               ST7S:
-001429  1  48                   PHA             ;SAVE SYMBOL
-00142A  1               ;142B:AD 4E 12 1107
-00142A  1  AD 4D 12             LDA P123D       ;LOAD C OF 2ND. &
-00142D  1               ;142E:20 6D 14 1108
-00142D  1  20 6C 14             JSR HVDSP1      ;->P123C
-001430  1               ;1431:68 1109
-001430  1  68                   PLA             ;RESTORE SYM
-001431  1               ;1432:4C 7A 13 1110
-001431  1  4C 79 13             JMP ST25S
-001434  1               
-001434  1               ;1435:48 1112
-001434  1               ST8S:
-001434  1  48                   PHA             ;SAVE SYM
-001435  1               ;1436:20 46 15 1113
-001435  1  20 45 15             JSR CHKCPLX     ;CHECK COMPLEX (CPLX->P123B&DSP)
-001438  1               ;1439:68 1114
-001438  1  68                   PLA             ;RESTORE SYM
-001439  1               ;143A:4C 98 13 1115
-001439  1  4C 97 13             JMP ST3S
-00143C  1               ;143D:48 1117
-00143C  1               ST8C:
-00143C  1  48                   PHA             ;SAVE C
-00143D  1               ;143E:20 46 15 1118
-00143D  1  20 45 15             JSR CHKCPLX     ;IF CPLX,CPLX->P123B
-001440  1               ;1441:68 1119
-001440  1  68                   PLA
-001441  1               ;1442:20 59 14 1120
-001441  1  20 58 14             JSR WASIN6      ;C->P123A & DSP.
-001444  1               ;1445:20 6D 15 1121
-001444  1  20 6C 15             JSR SFTFB1      ;SHFT COND.BF2,1
-001447  1               ;1448:A9 01 1122
-001447  1  A9 01                LDA #1          ;NEXT STATE
-001449  1               
-001449  1               ;144A:8D 52 12 1124
-001449  1               CONTPRO:
-001449  1  8D 51 12             STA STATE       ;RECORD STATE
-00144C  1               ;144D:60 1125
-00144C  1  60                   RTS
-00144D  1               
-00144D  1               ;144E:48 1127
-00144D  1               WASIN1:
-00144D  1  48                   PHA             ;CURRENT CHR.PUSH
-00144E  1               ;144F:8D 4A 12 1128
-00144E  1  8D 49 12             STA P1239
-001451  1               ;1452:20 61 14 1129
-001451  1  20 60 14             JSR LOWBLK      ;LOW CLEAR&RESTORE CV
-001454  1               ;1455:68 1130
-001454  1  68                   PLA
-001455  1               ;1456:4C F8 14 1131
-001455  1  4C F7 14             JMP OUTGEN      ;UPPER HALF.
-001458  1               
-001458  1               ;1459:E6 24 1133
-001458  1               WASIN6:
-001458  1  E6 24                INC CH          ;CH=CH+1
-00145A  1               ;145B:8D 4B 12 1134
-00145A  1  8D 4A 12             STA P123A       ;C->P123A
-00145D  1               ;145E:4C F8 14 1135
-00145D  1  4C F7 14             JMP OUTGEN      ;DISP. IT!
-001460  1               
-001460  1               ;1461:A9 20 1137
-001460  1               LOWBLK:
-001460  1  A9 20                LDA #$20        ;BLANK
-001462  1               ;1463:E6 25 1138
-001462  1               WASIN3:
-001462  1  E6 25                INC CV          ;LOWER POS.
-001464  1               ;1465:8D 4C 12 1139
-001464  1  8D 4B 12             STA P123B       ;CHR.SAVE
-001467  1               ;1468:4C F8 14 1140
-001467  1  4C F7 14             JMP OUTGEN      ;DISP. IT!
-00146A  1               
-00146A  1               ;146B:A9 20 1142
-00146A  1               LOWBLK2:
-00146A  1  A9 20                LDA #$20        ;BLANK
-00146C  1               ;146D:E6 25 1143
-00146C  1               HVDSP1:
-00146C  1  E6 25                INC CV          ;LOWER POS.
-00146E  1               ;146F:E6 24 1144
-00146E  1  E6 24                INC CH
-001470  1               ;1471:8D 4D 12 1145
-001470  1  8D 4C 12             STA P123C       ;LOWER V.V
-001473  1               ;1474:4C F8 14 1146
-001473  1  4C F7 14             JMP OUTGEN      ;DISP.IT!
-001476  1               
-001476  1               ;1477:48 1148
-001476  1               WASIN4:
-001476  1  48                   PHA             ;CURRENT C->P123D
-001477  1               ;1478:8D 4E 12 1149
-001477  1  8D 4D 12             STA P123D
-00147A  1               ;147B:A5 24 1150
-00147A  1  A5 24                LDA CH
-00147C  1               
-00147C  1               ;147D:C9 24 1151
-00147C  1  C9 24                CMP #$24
-00147E  1               ;147F:10 08 1152
-00147E  1  10 08                BPL NXT1
-001480  1               ;1481:E6 24 1153
-001480  1  E6 24                INC CH
-001482  1               ;1483:E6 24 1154
-001482  1  E6 24                INC CH
-001484  1               ;1485:68 1155
-001484  1  68                   PLA
-001485  1               ;1486:4C F8 14 1156
-001485  1  4C F7 14             JMP OUTGEN
-001488  1               ;1489:E6 25 1157
-001488  1               NXT1:
-001488  1  E6 25                INC CV
-00148A  1               ;148B:E6 25 1158
-00148A  1  E6 25                INC CV
-00148C  1               ;148D:A9 00 1159
-00148C  1  A9 00                LDA #0
-00148E  1               ;148F:85 24 1160
-00148E  1  85 24                STA CH
-001490  1               ;1491:68 1161
-001490  1  68                   PLA
-001491  1               ;1492:4C F8 14 1162
-001491  1  4C F7 14             JMP OUTGEN      ;DISP. IT!
-001494  1               
-001494  1               ;1495:48 1164
-001494  1               VVDSP2:
-001494  1  48                   PHA
-001495  1               ;1496:80 4F 12 1165
-001495  1  8D 4E 12             STA P123E
-001498  1               ;1499:A5 24 1166
-001498  1  A5 24                LDA CH
-00149A  1               ;149B:C9 24 1167
-00149A  1  C9 24                CMP #$24
-00149C  1               ;149D:10 0A 1168
-00149C  1  10 0A                BPL NXT2
-00149E  1               ;149F:E6 24 1169
-00149E  1  E6 24                INC CH
-0014A0  1               ;14A1:E6 24 1170
-0014A0  1  E6 24                INC CH
-0014A2  1               ;14A3:E6 24 1171
-0014A2  1  E6 24                INC CH
-0014A4  1               ;14A5:68 1172
-0014A4  1  68                   PLA
-0014A5  1               ;14A6:4C F8 14 1173
-0014A5  1  4C F7 14             JMP OUTGEN
-0014A8  1               ;14A9:E6 25 1174
-0014A8  1               NXT2:
-0014A8  1  E6 25                INC CV
-0014AA  1               ;14AB:E6 25 1175
-0014AA  1  E6 25                INC CV
-0014AC  1               ;14AD:A9 01 1176
-0014AC  1  A9 01                LDA #1
-0014AE  1               ;14AF:85 24 1177
-0014AE  1  85 24                STA CH
-0014B0  1               ;14B1:68 1178
-0014B0  1  68                   PLA
-0014B1  1               ;14B2:4C FB 14 1179
-0014B1  1  4C F7 14             JMP OUTGEN
-0014B4  1               
-0014B4  1               ;14B5:48 1181
-0014B4  1               HVDSP:
-0014B4  1  48                   PHA             ;SAVE LOW CODE OF H.V
-0014B5  1               ;14B6:8D 50 12 1182
-0014B5  1  8D 4F 12             STA P123F
-0014B8  1               ;14B9:A5 24 1183
-0014B8  1  A5 24                LDA CH
-0014BA  1               ;14BB:C9 24 1184
-0014BA  1  C9 24                CMP #$24
-0014BC  1               ;14BD:10 0A 1185
-0014BC  1  10 0A                BPL NXT3
-0014BE  1               ;14BF:E6 24 1186
-0014BE  1  E6 24                INC CH
-0014C0  1               ;14C1:E6 24 1187
-0014C0  1  E6 24                INC CH
-0014C2  1               ;14C3:E6 25 1188
-0014C2  1  E6 25                INC CV
-0014C4  1               ;14C5:68 1189
-0014C4  1  68                   PLA
-0014C5  1               ;14C6:4C F8 14 1190
-0014C5  1  4C F7 14             JMP OUTGEN
-0014C8  1               
-0014C8  1               ;14C9:E6 25 1192
-0014C8  1               NXT3:
-0014C8  1  E6 25                INC CV
-0014CA  1               ;14CB:E6 25 1193
-0014CA  1  E6 25                INC CV
-0014CC  1               ;14CD:E6 25 1194
-0014CC  1  E6 25                INC CV
-0014CE  1               ;14CF:A9 00 1195
-0014CE  1  A9 00                LDA #0
-0014D0  1               ;14D1:85 24 1196
-0014D0  1  85 24                STA CH
-0014D2  1               ;14D3:68 1197
-0014D2  1  68                   PLA
-0014D3  1               ;14D4:4C F8 14 1198
-0014D3  1  4C F7 14             JMP OUTGEN
-0014D6  1               
-0014D6  1               ;14D7:48 1200
-0014D6  1               LVVDSP:
-0014D6  1  48                   PHA
-0014D7  1               ;14D8:8D 51 12 1201
-0014D7  1  8D 50 12             STA P1240
-0014DA  1               ;14DB:A5 24 1202
-0014DA  1  A5 24                LDA CH
-0014DC  1               
-0014DC  1               ;14DD:C9 24 1203
-0014DC  1  C9 24                CMP #$24
-0014DE  1               ;14DF:10 0C 1204
-0014DE  1  10 0C                BPL NXT4
-0014E0  1               ;14E1:E6 24 1205
-0014E0  1  E6 24                INC CH
-0014E2  1               ;14E3:E6 24 1206
-0014E2  1  E6 24                INC CH
-0014E4  1               ;14E5:E6 24 1207
-0014E4  1  E6 24                INC CH
-0014E6  1               ;14E7:E6 25 1208
-0014E6  1  E6 25                INC CV
-0014E8  1               ;14E9:68 1209
-0014E8  1  68                   PLA
-0014E9  1               ;14EA:4C F8 14 1210
-0014E9  1  4C F7 14             JMP OUTGEN
-0014EC  1               
-0014EC  1               ;14ED:E6 25 1212
-0014EC  1               NXT4:
-0014EC  1  E6 25                INC CV
-0014EE  1               ;14EF:E6 25 1213
-0014EE  1  E6 25                INC CV
-0014F0  1               ;14F1:E6 25 1214
-0014F0  1  E6 25                INC CV
-0014F2  1               ;14F3:A9 01 1215
-0014F2  1  A9 01                LDA #1
-0014F4  1               ;14F5:85 24 1216
-0014F4  1  85 24                STA CH
-0014F6  1               ;14F7:68 1217
-0014F6  1  68                   PLA
-0014F7  1               ;14F8:20 C8 10 1218
-0014F7  1               OUTGEN:
-0014F7  1  20 C8 10             JSR NORDISP
-0014FA  1               ;14FB:20 62 0E 1219
-0014FA  1  20 62 0E             JSR TPLOAD
-0014FD  1               ;14FE:60 1220 RTS51
-0014FD  1  60                   RTS
-0014FE  1               
-0014FE  1               ;14FF:48 1222
-0014FE  1               VVDSP:
-0014FE  1  48                   PHA             ;V.V SAVE
-0014FF  1               ;1500:20 4E 14 1223
-0014FF  1  20 4D 14             JSR WASIN1      ;CLR LOW&DSP.UPPER
-001502  1               ;1503:68 1224
-001502  1  68                   PLA
-001503  1               ;1504:29 0F 1225
-001503  1  29 0F                AND #$0F
-001505  1               ;1506:20 63 14 1226
-001505  1  20 62 14             JSR WASIN3      ;MAKE LOWER
-001508  1               ;1509:60 1227
-001508  1  60                   RTS
-001509  1               
-001509  1               ;150A:48 1229
-001509  1               DISPVV:
-001509  1  48                   PHA             ;SAVE V.V
-00150A  1               ;150B:20 59 14 1230
-00150A  1  20 58 14             JSR WASIN6      ;LOE CLR & UP DSP.
-00150D  1               ;150E:68 1231
-00150D  1  68                   PLA
-00150E  1               ;150F:29 0F 1232
-00150E  1  29 0F                AND #$0F        ;LEAVE LOW
-001510  1               ;1511:20 6D 14 1233
-001510  1  20 6C 14             JSR HVDSP1
-001513  1               ;1514:60 1234
-001513  1  60                   RTS
-001514  1               
-001514  1               ;1515:48 1236
-001514  1               DISPVV1:
-001514  1  48                   PHA             ;SAVE V.V
-001515  1               ;1516:20 77 14 1237
-001515  1  20 76 14             JSR WASIN4      ;DISP UPPER
-001518  1               ;1519:68 1238
-001518  1  68                   PLA
-001519  1               ;151A:29 OF 1239
-001519  1  29 0F                AND #$0F         ;LEAVE LOW OF V.V
-00151B  1               ;151C:20 B5 14 1240
-00151B  1  20 B4 14             JSR HVDSP
-00151E  1               ;151F:60 1241
-00151E  1  60                   RTS
-00151F  1               
-00151F  1               ;1520:48 1243
-00151F  1               DISPVV2:
-00151F  1  48                   PHA             ;SAVE V.V
-001520  1               ;1521:20 95 14 1244
-001520  1  20 94 14             JSR VVDSP2      ;V.V DSP(V.V ->P123E)
-001523  1               ;1524:68 1245
-001523  1  68                   PLA
-001524  1               ;1525:29 OF 1246
-001524  1  29 0F                AND #$0F        ;V.V^OF
-001526  1               ;1527:20 D7 14 1247
-001526  1  20 D6 14             JSR LVVDSP      ;LOW DSP & LOW ->P1240
-001529  1               ;152A:60 1248
-001529  1  60                   RTS
-00152A  1               
-00152A  1               ;152B:A9 80 1250
-00152A  1               MOVPOS:
-00152A  1  A9 80                LDA #$80        ;TEMP MODE CHANGE
-00152C  1               ;152D:8D 41 OD 1251
-00152C  1  8D 41 0D             STA POSFL
-00152F  1               ;1530:A9 00 1252
-00152F  1  A9 00                LDA #0
-001531  1               ;1532:80 42 OD 1253
-001531  1  8D 42 0D             STA ADRFL
-001534  1               ;1535:AD 4C 12 1254
-001534  1  AD 4B 12             LDA P123B
-001537  1               
-001537  1               ;1538:29 0F 1255
-001537  1  29 0F                AND #$0F
-001539  1               ;153A:20 C8 10 1256
-001539  1  20 C8 10             JSR NORDISP
-00153C  1               ;153D:20 62 0E 1257
-00153C  1  20 62 0E             JSR TPLOAD
-00153F  1               ;1540:A9 00 1258
-00153F  1  A9 00                LDA #0
-001541  1               ;1542:80 41 OD 1259
-001541  1  8D 41 0D             STA POSFL
-001544  1               ;1545:60 1260
-001544  1  60                   RTS
-001545  1               
-001545  1               ;1546:AD 4C 12 1262
-001545  1               CHKCPLX:
-001545  1  AD 4B 12             LDA P123B       ;1ST CON.
-001548  1               ;1549:85 EE 1263
-001548  1  85 EE                STA PATLOC
-00154A  1               ;154B:AD 4B 12 1264
-00154A  1  AD 4A 12             LDA P123A       ;2ND CON.
-00154D  1               ;154E:C9 6A 1265
-00154D  1  C9 6A                CMP #$6A        ;CHECK 2ND IF W
-00154F  1               ;1550:00 02 1266
-00154F  1  D0 02                BNE NOCOS
-001551  1               ;1552:C6 EE 1267
-001551  1  C6 EE                DEC PATLOC
-001553  1               ;1554:18 1268
-001553  1               NOCOS:
-001553  1  18                   CLC
-001554  1               ;1555:65 EE 1269
-001554  1  65 EE                ADC PATLOC
-001556  1               ;1557:38 1270
-001556  1  38                   SEC
-001557  1               ;1558:E9 CO 1271
-001557  1  E9 C0                SBC #$C0
-001559  1               ;155A:AA 1272
-001559  1  AA                   TAX
-00155A  1               ;155B:C9 14 1273
-00155A  1  C9 14                CMP #$14        ;FILTERING!
-00155C  1               ;155D:BO 07 1274
-00155C  1  B0 07                BCS NOCOMB
-00155E  1               ;155F:BD 1B 13 1275
-00155E  1  BD 1A 13             LDA CPLXCN,X
-001561  1               ;1562:09 00 1276
-001561  1  C9 00                CMP #0          ;IF 0,CANNOT BE COMBINED!
-001563  1               ;1564:DO 04 1277
-001563  1  D0 04                BNE GOCPLX
-001565  1               ;1566:20 DD FB 1278
-001565  1               NOCOMB:
-001565  1  20 DD FB             JSR BEEP
-001568  1               ;1569:60 1279
-001568  1  60                   RTS
-001569  1               
-001569  1               ;156A:4C 63 14 1281
-001569  1               GOCPLX:
-001569  1  4C 62 14             JMP WASIN3
-00156C  1               
-00156C  1               ;156D:A5 24 1283
-00156C  1               SFTFB1:
-00156C  1  A5 24                LDA CH
-00156E  1               ;156F:C9 25 1284
-00156E  1  C9 25                CMP #$25
-001570  1               ;1571:10 05 1285
-001570  1  10 05                BPL NO9
-001572  1               ;1573:E6 24 1286
-001572  1  E6 24                INC CH
-001574  1               ;1575:4C 7B 15 1287
-001574  1  4C 7A 15             JMP SFTBFA
-001577  1               ;1578:20 D6 0E 1288
-001577  1               NO9:
-001577  1  20 D6 0E             JSR ASCROL
-00157A  1               
-00157A  1               ;157B: 1290 ************************************
-00157A  1               ;157B: 1291 *
-00157A  1               ;157B: 1292 * CONDITION BUFFER ADJUST:
-00157A  1               ;157B: 1293 * (9)<-(A)<-(D)<-(E)
-00157A  1               ;157B: 1294 * (B)<-(C)<-(F)<-(0)
-00157A  1               ;157B: 1295 *
-00157A  1               ;1578: 1296 ********************************
-00157A  1               
-00157A  1               ;157B:AD 4B 12 1298
-00157A  1               SFTBFA:
-00157A  1  AD 4A 12             LDA P123A
-00157D  1               ;157E:8D 4A 12 1299
-00157D  1  8D 49 12             STA P1239
-001580  1               ;1581:AD 4D 12 1300
-001580  1  AD 4C 12             LDA P123C
-001583  1               ;1584:80 4C 12 1301
-001583  1  8D 4B 12             STA P123B
-001586  1               ;1587:AD 4E 12 1302
-001586  1  AD 4D 12             LDA P123D
-001589  1               ;158A:80 4B 12 1303
-001589  1  8D 4A 12             STA P123A
-00158C  1               ;158D:AD 50 12 1304
-00158C  1  AD 4F 12             LDA P123F
-00158F  1               ;1590:8D 4D 12 1305
-00158F  1  8D 4C 12             STA P123C
-001592  1               ;1593:AD 4F 12 1306
-001592  1  AD 4E 12             LDA P123E
-001595  1               
-001595  1               ;1596:80 4E 12 1307
-001595  1  8D 4D 12             STA P123D
-001598  1               ;1599:AD 51 12 1308
-001598  1  AD 50 12             LDA P1240
-00159B  1               ;159C:8D 50 12 1309
-00159B  1  8D 4F 12             STA P123F
-00159E  1               ;159F:A9 00 1310
-00159E  1  A9 00                LDA #0
-0015A0  1               ;15A1:8D 50 12 1311
-0015A0  1  8D 4F 12             STA P123F
-0015A3  1               ;15A4:80 51 12 1312
-0015A3  1  8D 50 12             STA P1240
-0015A6  1               ;15A7:20 22 FC 1313
-0015A6  1  20 22 FC             JSR VTAB
-0015A9  1               ;15AA:60 1314
-0015A9  1  60                   RTS
-0015AA  1               
-0015AA  1               ;15AB:A5 24 1316
-0015AA  1               SFTFB2:
-0015AA  1  A5 24                LDA CH
-0015AC  1               ;15AD:C9 24 1317
-0015AC  1  C9 24                CMP #$24
-0015AE  1               ;15AF : 10 07 1318
-0015AE  1  10 07                BPL NO10
-0015B0  1               ;15B1:E6 24 1319
-0015B0  1  E6 24                INC CH
-0015B2  1               ;15B3:E6 24 1320
-0015B2  1  E6 24                INC CH
-0015B4  1               ;15B5:4C BB 15 1321
-0015B4  1  4C BA 15             JMP SFTBFB
-0015B7  1               ;15B8:20 D6 0E 1322
-0015B7  1               NO10:
-0015B7  1  20 D6 0E             JSR ASCROL
-0015BA  1               
-0015BA  1               ;15BB: 1324 ***********************************
-0015BA  1               ;15BB: 1325 *
-0015BA  1               ;15BB: 1326 * CONDITION BUFFER ADJUST1:
-0015BA  1               ;15BB: 1327 * (9)<-(D)<-0, (A)<-(E)<-0
-0015BA  1               ;15BB: 1328 * (B)<-(F)<-0,(C)<-(0)<-0
-0015BA  1               ;15BB: 1329 *
-0015BA  1               ;15BB: 1330 *********************************
-0015BA  1               
-0015BA  1               ;15BB:AD 4E 12 1332
-0015BA  1               SFTBFB:
-0015BA  1  AD 4D 12             LDA P123D
-0015BD  1               ;15BE:8D 4A 12 1333
-0015BD  1  8D 49 12             STA P1239
-0015C0  1               ;15C1:AD 50 12 1334
-0015C0  1  AD 4F 12             LDA P123F
-0015C3  1               ;15C4:8D 4C 12 1335
-0015C3  1  8D 4B 12             STA P123B
-0015C6  1               ;15C7:AD 4F 12 1336
-0015C6  1  AD 4E 12             LDA P123E
-0015C9  1               ;15CA:8D 4B 12 1337
-0015C9  1  8D 4A 12             STA P123A
-0015CC  1               ;15CD:AD 51 12 1338
-0015CC  1  AD 50 12             LDA P1240
-0015CF  1               ;1500:80 4D 12 1339
-0015CF  1  8D 4C 12             STA P123C
-0015D2  1               ;15D3:A9 00 1340
-0015D2  1  A9 00                LDA #0
-0015D4  1               ;1505:80 4E 12 1341
-0015D4  1  8D 4D 12             STA P123D
-0015D7  1               ;15D8:8D 4F 12 1342
-0015D7  1  8D 4E 12             STA P123E
-0015DA  1               ;15DB:8D 50 12 1343
-0015DA  1  8D 4F 12             STA P123F
-0015DD  1               ;15DE:8D 51 12 1344
-0015DD  1  8D 50 12             STA P1240
-0015E0  1               ;15E1:20 22 FC 1345
-0015E0  1  20 22 FC             JSR VTAB
-0015E3  1               ;15E4:60 1346
-0015E3  1  60                   RTS
-0015E4  1               
-0015E4  1               ;15E5:20 AB 15 1348
-0015E4  1               ESFTFB3:
-0015E4  1  20 AA 15             JSR SFTFB2
-0015E7  1               ;15E8:20 6D 15 1349
-0015E7  1               ESFTFB1:
-0015E7  1  20 6C 15             JSR SFTFB1
-0015EA  1               ;15EB:4C F4 15 1350
-0015EA  1  4C F3 15             JMP ECONDCLR
-0015ED  1               ;15EE:20 AB 15 1352
-0015ED  1  20 AA 15             JSR SFTFB2
-0015F0  1               ;15F1:20 AB 15 1353
-0015F0  1               ECONDCL1:
-0015F0  1  20 AA 15             JSR SFTFB2
-0015F3  1               
-0015F3  1               ;15F4: 1355 ********************************
-0015F3  1               ;15F4: 1356 *
-0015F3  1               ;15F4: 1357 * CLEAR ALL OF CONDITION BUFFER
-0015F3  1               ;15F4: 1358 *
-0015F3  1               ;15F4: 1359 ;*******************************
-0015F3  1               
-0015F3  1               ;15F4:20 DD FB 1361
-0015F3  1               ECONDCLR:
-0015F3  1  20 DD FB             JSR BEEP
-0015F6  1               ;15F7:A9 00 1362
-0015F6  1  A9 00                LDA #0
-0015F8  1               ;15F9:8D 4A 12 1363
-0015F8  1  8D 49 12             STA P1239
-0015FB  1               ;15FC:8D 4B 12 1364
-0015FB  1  8D 4A 12             STA P123A
-0015FE  1               ;15FF:8D 4C 12 1365
-0015FE  1  8D 4B 12             STA P123B
-001601  1               ;1602:8D 4D 12 1366
-001601  1  8D 4C 12             STA P123C
-001604  1               ;1605:8D 4E 12 1367
-001604  1  8D 4D 12             STA P123D
-001607  1               ;1608:8D 4F 12 1368
-001607  1  8D 4E 12             STA P123E
-00160A  1               ;160B:8D 50 12 1369
-00160A  1  8D 4F 12             STA P123F
-00160D  1               ;160E:8D 51 12 1370
-00160D  1  8D 50 12             STA P1240
-001610  1               ;1611:4C 4A 14 1371
-001610  1  4C 49 14             JMP CONTPRO
-001613  1               ;1614:2C C3 08 1372
-001613  1               KPEENG:
-001613  1  2C C3 08             BIT SNDFLG
-001616  1               ;1617:10 14 1373
-001616  1  10 14                BPL NSOUND
-001618  1               ;1619:48 1374
-001618  1  48                   PHA
-001619  1               ;161A:A9 10 1375
-001619  1  A9 10                LDA #$10
-00161B  1               ;161C:20 A8 FC 1376
-00161B  1  20 A8 FC             JSR MWAIT
-00161E  1               ;161F:A0 CO 1377
-00161E  1  A0 C0                LDY #$C0
-001620  1               ;1621:A9 08 1378
-001620  1               KPEE1:
-001620  1  A9 08                LDA #8
-001622  1               ;1623:20 AB FC 1379
-001622  1  20 A8 FC             JSR MWAIT
-001625  1               
-001625  1               ;1626:AD 30 CO 1380
-001625  1  AD 30 C0             LDA SPEAKER
-001628  1               ;1629:88 1381
-001628  1  88                   DEY
-001629  1               ;162A: DO F5 1382
-001629  1  D0 F5                BNE KPEE1
-00162B  1               ;162C:68 1383
-00162B  1  68                   PLA
-00162C  1               ;162D:60 1384
-00162C  1               NSOUND:
-00162C  1  60                   RTS
-00162D  1               
-00162D  1               ;162E:A9 80 1386
-00162D  1               CTRLT:
-00162D  1  A9 80                LDA #$80        ;TOGGLE SOUND
-00162F  1               ;1630:4D C3 08 1387
-00162F  1  4D C3 08             EOR SNDFLG
-001632  1               ;1633:8D C3 08 1388
-001632  1  8D C3 08             STA SNDFLG
-001635  1               ;1636:60 1389
-001635  1  60                   RTS
-001636  1               
-001636  1               ;*** SUCCESSFUL ASSEMBLY: NO ERRORS
-001636  1               
+00132A  1               ;132A:00 981
+00132A  1  00                   .byte $00
+00132B  1               ;132B:11 982
+00132B  1  11                   .byte $11
+00132C  1               ;132C:16 983
+00132C  1  16                   .byte $16
+00132D  1               ;132D:17 984
+00132D  1  17                   .byte $17
+00132E  1               ;132E:18 985
+00132E  1  18                   .byte $18
+00132F  1               
+00132F  1               
+00132F  1               ;132F:20 4E 14 987
+00132F  1               ST0C:
+00132F  1  20 4E 14             JSR WASIN1      ;CON IN ACC.OUT
+001332  1               ;1332:A9 01 988
+001332  1  A9 01                LDA #1          ;NEXT STATE
+001334  1               ;1334:4C 4A 14 989
+001334  1  4C 4A 14             JMP CONTPRO
+001337  1               
+001337  1               ;1337:20 FF 14 991
+001337  1               ST0VV:
+001337  1  20 FF 14             JSR VVDSP       ;V.V.DISP.
+00133A  1               ;133A:4C E8 15 992
+00133A  1  4C E8 15             JMP ESFTFB1     ;BEEP&CLEAR COND.BF.ALL!
+00133D  1               
+00133D  1               ;133D:20 4E 14 994
+00133D  1               ST0HV:
+00133D  1  20 4E 14             JSR WASIN1      ;DISP.H.V AT UPPER
+001340  1               
+001340  1               ;1340:4C EB 15 995
+001340  1  4C E8 15             JMP ESFTFB1     ;BEEP&CLEAR COND.BF. ALL!
+001343  1               ;1343:20 4E 14 997
+001343  1               ST0S:
+001343  1  20 4E 14             JSR WASIN1      ;CV,CH<-ACC:CV+1, CH<-BLANK
+001346  1               ;1346:20 6D 15 998
+001346  1  20 6D 15             JSR SFTFB1      ;SHIFT COND.BF. 1 TIME
+001349  1               ;1349:A9 00 999
+001349  1  A9 00                LDA #0          ;NEXT STATE
+00134B  1               ;134B:4C 4A 14 1000
+00134B  1  4C 4A 14             JMP CONTPRO
+00134E  1               ;134E:20 59 14 1002
+00134E  1               ST1CS:
+00134E  1  20 59 14             JSR WASIN6      ;DISP.IT!
+001351  1               ;1351:4C F1 15 1003
+001351  1  4C F1 15             JMP ECONDCL1    ;BEEP&CLEAR COND. BF.ALL!
+001354  1               
+001354  1               ;1354:20 0A 15 1005
+001354  1               ST1VV:
+001354  1  20 0A 15             JSR DISPVV      ;DISP V.V
+001357  1               ;1357:A9 02 1006
+001357  1  A9 02                LDA #2          ;NEXT STATE
+001359  1               ;1359:4C 4A 14 1007
+001359  1  4C 4A 14             JMP CONTPRO
+00135C  1               
+00135C  1               ;135C:20 63 14 1009
+00135C  1               ST1HV:
+00135C  1  20 63 14             JSR WASIN3      ;H.V DISP. AT LOW C.V POS
+00135F  1               ;135F:A9 03 1010
+00135F  1  A9 03                LDA #3          ;NEXT STATE
+001361  1               ;1361:4C 4A 14 1011
+001361  1  4C 4A 14             JMP CONTPRO
+001364  1               
+001364  1               ;1364:20 77 14 1013
+001364  1               ST25C:
+001364  1  20 77 14             JSR WASIN4      ;CHECK CH & DISP.C
+001367  1               ;1367:A9 04 1014
+001367  1  A9 04                LDA #4          ;NEXT STATE
+001369  1               ;1369:4C 4A 14 1015
+001369  1  4C 4A 14             JMP CONTPRO
+00136C  1               
+00136C  1               ;136C:20 15 15 1017
+00136C  1               ST25VV:
+00136C  1  20 15 15             JSR DISPVV1     ;V.V DISP.
+00136F  1               ;136F:4C E5 15 1018
+00136F  1  4C E5 15             JMP ESFTFB3     ;BEEP&CLEAR
+001372  1               
+001372  1               ;1372:20 63 14 1020
+001372  1               ST2HV:
+001372  1  20 63 14             JSR WASIN3      ;H.V DISP.
+001375  1               ;1375:A9 05 1021
+001375  1  A9 05                LDA #5          ;NEXT STATE
+001377  1               ;1377:4C 4A 14 1022
+001377  1  4C 4A 14             JMP CONTPRO
+00137A  1               
+00137A  1               ;137A:20 77 14 1024
+00137A  1               ST25S:
+00137A  1  20 77 14             JSR WASIN4      ;DISP.SYMBOL
+00137D  1               ;137D:20 AB 15 1025
+00137D  1  20 AB 15             JSR SFTFB2      ;ADJUST COND.BF
+001380  1               ;1380:20 60 15 1026
+001380  1  20 6D 15             JSR SFTFB1
+001383  1               ;1383:A9 00 1027
+001383  1  A9 00                LDA #0          ;NEXT STATE
+001385  1               ;1385:4C 4A 14 1028
+001385  1  4C 4A 14             JMP CONTPRO
+001388  1               
+001388  1               ;1388:20 59 14 1030
+001388  1               ST3C:
+001388  1  20 59 14             JSR WASIN6      ;C DISP! $123A <-C
+00138B  1               ;138B:A9 06 1031
+00138B  1  A9 06                LDA #6          ;NEXT STATE
+00138D  1               ;138D:4C 4A 14 1032
+00138D  1  4C 4A 14             JMP CONTPRO
+001390  1               
+001390  1               ;1390:20 0A 15 1034
+001390  1               ST3VV:
+001390  1  20 0A 15             JSR DISPVV      ;V.V DISP&SET $123A,C WITH V.V
+001393  1               ;1393:A9 05 1035
+001393  1  A9 05                LDA #5          ;NEXT STATE
+001395  1               ;1395:4C 4A 14 1036
+001395  1  4C 4A 14             JMP CONTPRO
+001398  1               
+001398  1               ;1398:20 59 14 1038
+001398  1               ST3S:
+001398  1  20 59 14             JSR WASIN6      ;DISP SYM& SET $123A WITH SYM
+00139B  1               ;139B:20 AB 15 1039
+00139B  1  20 AB 15             JSR SFTFB2      ;FONT BF2 - > BF1
+00139E  1               ;139E:A9 00 1040
+00139E  1  A9 00                LDA #0          ;NEXT STATE
+0013A0  1               ;13AO:4C 4A 14 1041
+0013A0  1  4C 4A 14             JMP CONTPRO
+0013A3  1               ;13A3:48 1043
+0013A3  1               ST4C:
+0013A3  1  48                   PHA             ;C SAVE
+0013A4  1               ;13A4:20 2B 15 1044
+0013A4  1  20 2B 15             JSR MOVPOS
+0013A7  1               ;13A7:20 6B 14 1045
+0013A7  1  20 6B 14             JSR LOWBLK2     ;BLANK $123C
+0013AA  1               ;13AA:AD 4E 12 1046
+0013AA  1  AD 4E 12             LDA P123D       ;C OF 2ND - > C' OF 1ST
+0013AD  1               
+0013AD  1               ;13AD:20 63 14 1047
+0013AD  1  20 63 14             JSR WASIN3      ;P123D -> P123B& P123B DISP.
+0013B0  1               ;13B0:68 1048 i
+0013B0  1  68                   PLA             ;RESTORE C
+0013B1  1               ;13B1:20 77 14 1049
+0013B1  1  20 77 14             JSR WASIN4      ;DISP IT!& C-> P123D
+0013B4  1               ;13B4:A9 07 1050
+0013B4  1  A9 07                LDA #7          ;NEXT STATE
+0013B6  1               ;13B6:4C 4A 14 1051
+0013B6  1  4C 4A 14             JMP CONTPRO
+0013B9  1               ;13B9:20 20 15 1053
+0013B9  1               ST47VV:
+0013B9  1  20 20 15             JSR DISPVV2     ;V->P123E
+0013BC  1               ;13BC:20 AB 15 1054
+0013BC  1  20 AB 15             JSR SFTFB2      ;V.V^0F->P1240
+0013BF  1               ;13BF:A9 02 1055
+0013BF  1  A9 02                LDA #2          ;NEXT STATE
+0013C1  1               ;13C1:4C 4A 14 1056
+0013C1  1  4C 4A 14             JMP CONTPRO
+0013C4  1               
+0013C4  1               ;13C4:20 B5 14 1058
+0013C4  1               ST47HV:
+0013C4  1  20 B5 14             JSR HVDSP        ;H.V - > P123F&DISP
+0013C7  1               ;13C7:20 AB 15 1059
+0013C7  1  20 AB 15             JSR SFTFB2      ;COND. B.F2->B.F.1& CLR BF2
+0013CA  1               ;13CA:A9 03 1060
+0013CA  1  A9 03                LDA #3          ;NEXT STATE
+0013CC  1               ;13CC:4C 4A 14 1061
+0013CC  1  4C 4A 14             JMP CONTPRO
+0013CF  1               ;13CF:48 1063
+0013CF  1               ST4S:
+0013CF  1  48                   PHA             ;SYM.SAVE
+0013D0  1               ;13D0:20 2B 15 1064
+0013D0  1  20 2B 15             JSR MOVPOS
+0013D3  1               ;13D3:AD 4E 12 1065
+0013D3  1  AD 4E 12             LDA P123D       ;LOAD C OF 2ND.
+0013D6  1               ;13D6:20 63 14 1066
+0013D6  1  20 63 14             JSR WASIN3      ;P123D->P123B
+0013D9  1               ;13D9:20 6B 14 1067
+0013D9  1  20 6B 14             JSR LOWBLK2     ;P123C<-BLANK
+0013DC  1               ;13DC:68 1068
+0013DC  1  68                   PLA             ;RESTORE SYM.
+0013DD  1               ;13DD:4C 7A 13 1069
+0013DD  1  4C 7A 13             JMP ST25S       ;DISP.SYMBOL
+0013E0  1               
+0013E0  1               ;13E0:48 1071
+0013E0  1               ST6C:
+0013E0  1  48                   PHA             ;SAVE C
+0013E1  1               ;13E1:20 2B 15 1072
+0013E1  1  20 2B 15             JSR MOVPOS      ;P123A<-P123B+P123A
+0013E4  1               ;13E4:AD 4B 12 1073
+0013E4  1  AD 4B 12             LDA P123A       ;GET C OF 2ND.
+0013E7  1               ;13E7:20 63 14 1074
+0013E7  1  20 63 14             JSR WASIN3      ;P123A->P123B
+0013EA  1               ;13EA:68 1075
+0013EA  1  68                   PLA             ;RESTORE C
+0013EB  1               ;13EB:20 59 14 1076
+0013EB  1  20 59 14             JSR WASIN6      ;DISP.IT(ACC. ->P123A
+0013EE  1               ;13EE:A9 08 1077
+0013EE  1  A9 08                LDA #8          ;NEXT STATE
+0013F0  1               ;13F0:4C 4A 14 1078
+0013F0  1  4C 4A 14             JMP CONTPRO
+0013F3  1               
+0013F3  1               ;13F3:20 15 15 1080
+0013F3  1               ST68VV:
+0013F3  1  20 15 15             JSR DISPVV1     ;V.V DISP. (V. V ->P123D,V.V^OF->P123F
+0013F6  1               ;13F6:20 6D 15 1081
+0013F6  1  20 6D 15             JSR SFTFB1      ;SHFT COND.BF
+0013F9  1               ;13F9:A9 02 1082
+0013F9  1  A9 02                LDA #2          ;NEXT STATE
+0013FB  1               ;13FB:4C 4A 14 1083
+0013FB  1  4C 4A 14             JMP CONTPRO
+0013FE  1               ;13FE:20 6D 14 1085
+0013FE  1               ST68HV:
+0013FE  1  20 6D 14             JSR HVDSP1      ;H. V->P123C
+001401  1               ;1401:20 60 15 1086
+001401  1  20 6D 15             JSR SFTFB1      ;SHFT COND.BF
+001404  1               ;1404:A9 03 1087
+001404  1  A9 03                LDA #3          ;NEXT STATE
+001406  1               ;1406:4C 4A 14 1088
+001406  1  4C 4A 14             JMP CONTPRO
+001409  1               ;1409:48 1090
+001409  1               ST6S:
+001409  1  48                   PHA             ;SAVE SYMBOL
+00140A  1               ;140A:20 2B 15 1091
+00140A  1  20 2B 15             JSR MOVPOS      ;P123A<-P123A+ P123B(H.V)
+00140D  1               
+00140D  1               ;140D:AD 4B 12 1092
+00140D  1  AD 4B 12             LDA P123A       ;GET C OF 2ND.
+001410  1               ;1410:20 63 14 1093
+001410  1  20 63 14             JSR WASIN3      ;P123A->P123B
+001413  1               ;1413:68 1094
+001413  1  68                   PLA             ;RESTORE SYMBOL
+001414  1               ;1414:4C 98 13 1095
+001414  1  4C 98 13             JMP ST3S
+001417  1               
+001417  1               ;1417:48 1097
+001417  1               ST7C:
+001417  1  48                   PHA             ;SAVE C
+001418  1               ;1418:AD 4E 12 1098
+001418  1  AD 4E 12             LDA P123D       ;LOAD C OF 2ND.
+00141B  1               
+00141B  1               ;141B:20 6D 14 1099
+00141B  1  20 6D 14             JSR HVDSP1      ;->P123C
+00141E  1               ;141E:68 1100
+00141E  1  68                   PLA             ;RESTORE C
+00141F  1               ;141F:20 77 14 1101
+00141F  1  20 77 14             JSR WASIN4      ;->P123D
+001422  1               ;1422:20 AB 15 1102
+001422  1  20 AB 15             JSR SFTFB2      ;COND.BF2->B.F1
+001425  1               ;1425:A9 01 1103
+001425  1  A9 01                LDA #1          ;NEXT STATE
+001427  1               ;1427:4C 4A 14 1104
+001427  1  4C 4A 14             JMP CONTPRO
+00142A  1               
+00142A  1               ;142A:48 1106
+00142A  1               ST7S:
+00142A  1  48                   PHA             ;SAVE SYMBOL
+00142B  1               ;142B:AD 4E 12 1107
+00142B  1  AD 4E 12             LDA P123D       ;LOAD C OF 2ND. &
+00142E  1               ;142E:20 6D 14 1108
+00142E  1  20 6D 14             JSR HVDSP1      ;->P123C
+001431  1               ;1431:68 1109
+001431  1  68                   PLA             ;RESTORE SYM
+001432  1               ;1432:4C 7A 13 1110
+001432  1  4C 7A 13             JMP ST25S
+001435  1               
+001435  1               ;1435:48 1112
+001435  1               ST8S:
+001435  1  48                   PHA             ;SAVE SYM
+001436  1               ;1436:20 46 15 1113
+001436  1  20 46 15             JSR CHKCPLX     ;CHECK COMPLEX (CPLX->P123B&DSP)
+001439  1               ;1439:68 1114
+001439  1  68                   PLA             ;RESTORE SYM
+00143A  1               ;143A:4C 98 13 1115
+00143A  1  4C 98 13             JMP ST3S
+00143D  1               ;143D:48 1117
+00143D  1               ST8C:
+00143D  1  48                   PHA             ;SAVE C
+00143E  1               ;143E:20 46 15 1118
+00143E  1  20 46 15             JSR CHKCPLX     ;IF CPLX,CPLX->P123B
+001441  1               ;1441:68 1119
+001441  1  68                   PLA
+001442  1               ;1442:20 59 14 1120
+001442  1  20 59 14             JSR WASIN6      ;C->P123A & DSP.
+001445  1               ;1445:20 6D 15 1121
+001445  1  20 6D 15             JSR SFTFB1      ;SHFT COND.BF2,1
+001448  1               ;1448:A9 01 1122
+001448  1  A9 01                LDA #1          ;NEXT STATE
+00144A  1               
+00144A  1               ;144A:8D 52 12 1124
+00144A  1               CONTPRO:
+00144A  1  8D 52 12             STA STATE       ;RECORD STATE
+00144D  1               ;144D:60 1125
+00144D  1  60                   RTS
+00144E  1               
+00144E  1               ;144E:48 1127
+00144E  1               WASIN1:
+00144E  1  48                   PHA             ;CURRENT CHR.PUSH
+00144F  1               ;144F:8D 4A 12 1128
+00144F  1  8D 4A 12             STA P1239
+001452  1               ;1452:20 61 14 1129
+001452  1  20 61 14             JSR LOWBLK      ;LOW CLEAR&RESTORE CV
+001455  1               ;1455:68 1130
+001455  1  68                   PLA
+001456  1               ;1456:4C F8 14 1131
+001456  1  4C F8 14             JMP OUTGEN      ;UPPER HALF.
+001459  1               
+001459  1               ;1459:E6 24 1133
+001459  1               WASIN6:
+001459  1  E6 24                INC CH          ;CH=CH+1
+00145B  1               ;145B:8D 4B 12 1134
+00145B  1  8D 4B 12             STA P123A       ;C->P123A
+00145E  1               ;145E:4C F8 14 1135
+00145E  1  4C F8 14             JMP OUTGEN      ;DISP. IT!
+001461  1               
+001461  1               ;1461:A9 20 1137
+001461  1               LOWBLK:
+001461  1  A9 20                LDA #$20        ;BLANK
+001463  1               ;1463:E6 25 1138
+001463  1               WASIN3:
+001463  1  E6 25                INC CV          ;LOWER POS.
+001465  1               ;1465:8D 4C 12 1139
+001465  1  8D 4C 12             STA P123B       ;CHR.SAVE
+001468  1               ;1468:4C F8 14 1140
+001468  1  4C F8 14             JMP OUTGEN      ;DISP. IT!
+00146B  1               
+00146B  1               ;146B:A9 20 1142
+00146B  1               LOWBLK2:
+00146B  1  A9 20                LDA #$20        ;BLANK
+00146D  1               ;146D:E6 25 1143
+00146D  1               HVDSP1:
+00146D  1  E6 25                INC CV          ;LOWER POS.
+00146F  1               ;146F:E6 24 1144
+00146F  1  E6 24                INC CH
+001471  1               ;1471:8D 4D 12 1145
+001471  1  8D 4D 12             STA P123C       ;LOWER V.V
+001474  1               ;1474:4C F8 14 1146
+001474  1  4C F8 14             JMP OUTGEN      ;DISP.IT!
+001477  1               
+001477  1               ;1477:48 1148
+001477  1               WASIN4:
+001477  1  48                   PHA             ;CURRENT C->P123D
+001478  1               ;1478:8D 4E 12 1149
+001478  1  8D 4E 12             STA P123D
+00147B  1               ;147B:A5 24 1150
+00147B  1  A5 24                LDA CH
+00147D  1               
+00147D  1               ;147D:C9 24 1151
+00147D  1  C9 24                CMP #$24
+00147F  1               ;147F:10 08 1152
+00147F  1  10 08                BPL NXT1
+001481  1               ;1481:E6 24 1153
+001481  1  E6 24                INC CH
+001483  1               ;1483:E6 24 1154
+001483  1  E6 24                INC CH
+001485  1               ;1485:68 1155
+001485  1  68                   PLA
+001486  1               ;1486:4C F8 14 1156
+001486  1  4C F8 14             JMP OUTGEN
+001489  1               ;1489:E6 25 1157
+001489  1               NXT1:
+001489  1  E6 25                INC CV
+00148B  1               ;148B:E6 25 1158
+00148B  1  E6 25                INC CV
+00148D  1               ;148D:A9 00 1159
+00148D  1  A9 00                LDA #0
+00148F  1               ;148F:85 24 1160
+00148F  1  85 24                STA CH
+001491  1               ;1491:68 1161
+001491  1  68                   PLA
+001492  1               ;1492:4C F8 14 1162
+001492  1  4C F8 14             JMP OUTGEN      ;DISP. IT!
+001495  1               
+001495  1               ;1495:48 1164
+001495  1               VVDSP2:
+001495  1  48                   PHA
+001496  1               ;1496:80 4F 12 1165
+001496  1  8D 4F 12             STA P123E
+001499  1               ;1499:A5 24 1166
+001499  1  A5 24                LDA CH
+00149B  1               ;149B:C9 24 1167
+00149B  1  C9 24                CMP #$24
+00149D  1               ;149D:10 0A 1168
+00149D  1  10 0A                BPL NXT2
+00149F  1               ;149F:E6 24 1169
+00149F  1  E6 24                INC CH
+0014A1  1               ;14A1:E6 24 1170
+0014A1  1  E6 24                INC CH
+0014A3  1               ;14A3:E6 24 1171
+0014A3  1  E6 24                INC CH
+0014A5  1               ;14A5:68 1172
+0014A5  1  68                   PLA
+0014A6  1               ;14A6:4C F8 14 1173
+0014A6  1  4C F8 14             JMP OUTGEN
+0014A9  1               ;14A9:E6 25 1174
+0014A9  1               NXT2:
+0014A9  1  E6 25                INC CV
+0014AB  1               ;14AB:E6 25 1175
+0014AB  1  E6 25                INC CV
+0014AD  1               ;14AD:A9 01 1176
+0014AD  1  A9 01                LDA #1
+0014AF  1               ;14AF:85 24 1177
+0014AF  1  85 24                STA CH
+0014B1  1               ;14B1:68 1178
+0014B1  1  68                   PLA
+0014B2  1               ;14B2:4C FB 14 1179
+0014B2  1  4C F8 14             JMP OUTGEN
+0014B5  1               
+0014B5  1               ;14B5:48 1181
+0014B5  1               HVDSP:
+0014B5  1  48                   PHA             ;SAVE LOW CODE OF H.V
+0014B6  1               ;14B6:8D 50 12 1182
+0014B6  1  8D 50 12             STA P123F
+0014B9  1               ;14B9:A5 24 1183
+0014B9  1  A5 24                LDA CH
+0014BB  1               ;14BB:C9 24 1184
+0014BB  1  C9 24                CMP #$24
+0014BD  1               ;14BD:10 0A 1185
+0014BD  1  10 0A                BPL NXT3
+0014BF  1               ;14BF:E6 24 1186
+0014BF  1  E6 24                INC CH
+0014C1  1               ;14C1:E6 24 1187
+0014C1  1  E6 24                INC CH
+0014C3  1               ;14C3:E6 25 1188
+0014C3  1  E6 25                INC CV
+0014C5  1               ;14C5:68 1189
+0014C5  1  68                   PLA
+0014C6  1               ;14C6:4C F8 14 1190
+0014C6  1  4C F8 14             JMP OUTGEN
+0014C9  1               
+0014C9  1               ;14C9:E6 25 1192
+0014C9  1               NXT3:
+0014C9  1  E6 25                INC CV
+0014CB  1               ;14CB:E6 25 1193
+0014CB  1  E6 25                INC CV
+0014CD  1               ;14CD:E6 25 1194
+0014CD  1  E6 25                INC CV
+0014CF  1               ;14CF:A9 00 1195
+0014CF  1  A9 00                LDA #0
+0014D1  1               ;14D1:85 24 1196
+0014D1  1  85 24                STA CH
+0014D3  1               ;14D3:68 1197
+0014D3  1  68                   PLA
+0014D4  1               ;14D4:4C F8 14 1198
+0014D4  1  4C F8 14             JMP OUTGEN
+0014D7  1               
+0014D7  1               ;14D7:48 1200
+0014D7  1               LVVDSP:
+0014D7  1  48                   PHA
+0014D8  1               ;14D8:8D 51 12 1201
+0014D8  1  8D 51 12             STA P1240
+0014DB  1               ;14DB:A5 24 1202
+0014DB  1  A5 24                LDA CH
+0014DD  1               
+0014DD  1               ;14DD:C9 24 1203
+0014DD  1  C9 24                CMP #$24
+0014DF  1               ;14DF:10 0C 1204
+0014DF  1  10 0C                BPL NXT4
+0014E1  1               ;14E1:E6 24 1205
+0014E1  1  E6 24                INC CH
+0014E3  1               ;14E3:E6 24 1206
+0014E3  1  E6 24                INC CH
+0014E5  1               ;14E5:E6 24 1207
+0014E5  1  E6 24                INC CH
+0014E7  1               ;14E7:E6 25 1208
+0014E7  1  E6 25                INC CV
+0014E9  1               ;14E9:68 1209
+0014E9  1  68                   PLA
+0014EA  1               ;14EA:4C F8 14 1210
+0014EA  1  4C F8 14             JMP OUTGEN
+0014ED  1               
+0014ED  1               ;14ED:E6 25 1212
+0014ED  1               NXT4:
+0014ED  1  E6 25                INC CV
+0014EF  1               ;14EF:E6 25 1213
+0014EF  1  E6 25                INC CV
+0014F1  1               ;14F1:E6 25 1214
+0014F1  1  E6 25                INC CV
+0014F3  1               ;14F3:A9 01 1215
+0014F3  1  A9 01                LDA #1
+0014F5  1               ;14F5:85 24 1216
+0014F5  1  85 24                STA CH
+0014F7  1               ;14F7:68 1217
+0014F7  1  68                   PLA
+0014F8  1               ;14F8:20 C8 10 1218
+0014F8  1               OUTGEN:
+0014F8  1  20 C8 10             JSR NORDISP
+0014FB  1               ;14FB:20 62 0E 1219
+0014FB  1  20 62 0E             JSR TPLOAD
+0014FE  1               ;14FE:60 1220 RTS51
+0014FE  1  60                   RTS
+0014FF  1               
+0014FF  1               ;14FF:48 1222
+0014FF  1               VVDSP:
+0014FF  1  48                   PHA             ;V.V SAVE
+001500  1               ;1500:20 4E 14 1223
+001500  1  20 4E 14             JSR WASIN1      ;CLR LOW&DSP.UPPER
+001503  1               ;1503:68 1224
+001503  1  68                   PLA
+001504  1               ;1504:29 0F 1225
+001504  1  29 0F                AND #$0F
+001506  1               ;1506:20 63 14 1226
+001506  1  20 63 14             JSR WASIN3      ;MAKE LOWER
+001509  1               ;1509:60 1227
+001509  1  60                   RTS
+00150A  1               
+00150A  1               ;150A:48 1229
+00150A  1               DISPVV:
+00150A  1  48                   PHA             ;SAVE V.V
+00150B  1               ;150B:20 59 14 1230
+00150B  1  20 59 14             JSR WASIN6      ;LOE CLR & UP DSP.
+00150E  1               ;150E:68 1231
+00150E  1  68                   PLA
+00150F  1               ;150F:29 0F 1232
+00150F  1  29 0F                AND #$0F        ;LEAVE LOW
+001511  1               ;1511:20 6D 14 1233
+001511  1  20 6D 14             JSR HVDSP1
+001514  1               ;1514:60 1234
+001514  1  60                   RTS
+001515  1               
+001515  1               ;1515:48 1236
+001515  1               DISPVV1:
+001515  1  48                   PHA             ;SAVE V.V
+001516  1               ;1516:20 77 14 1237
+001516  1  20 77 14             JSR WASIN4      ;DISP UPPER
+001519  1               ;1519:68 1238
+001519  1  68                   PLA
+00151A  1               ;151A:29 OF 1239
+00151A  1  29 0F                AND #$0F         ;LEAVE LOW OF V.V
+00151C  1               ;151C:20 B5 14 1240
+00151C  1  20 B5 14             JSR HVDSP
+00151F  1               ;151F:60 1241
+00151F  1  60                   RTS
+001520  1               
+001520  1               ;1520:48 1243
+001520  1               DISPVV2:
+001520  1  48                   PHA             ;SAVE V.V
+001521  1               ;1521:20 95 14 1244
+001521  1  20 95 14             JSR VVDSP2      ;V.V DSP(V.V ->P123E)
+001524  1               ;1524:68 1245
+001524  1  68                   PLA
+001525  1               ;1525:29 OF 1246
+001525  1  29 0F                AND #$0F        ;V.V^OF
+001527  1               ;1527:20 D7 14 1247
+001527  1  20 D7 14             JSR LVVDSP      ;LOW DSP & LOW ->P1240
+00152A  1               ;152A:60 1248
+00152A  1  60                   RTS
+00152B  1               
+00152B  1               ;152B:A9 80 1250
+00152B  1               MOVPOS:
+00152B  1  A9 80                LDA #$80        ;TEMP MODE CHANGE
+00152D  1               ;152D:8D 41 OD 1251
+00152D  1  8D 41 0D             STA POSFL
+001530  1               ;1530:A9 00 1252
+001530  1  A9 00                LDA #0
+001532  1               ;1532:80 42 OD 1253
+001532  1  8D 42 0D             STA ADRFL
+001535  1               ;1535:AD 4C 12 1254
+001535  1  AD 4C 12             LDA P123B
+001538  1               
+001538  1               ;1538:29 0F 1255
+001538  1  29 0F                AND #$0F
+00153A  1               ;153A:20 C8 10 1256
+00153A  1  20 C8 10             JSR NORDISP
+00153D  1               ;153D:20 62 0E 1257
+00153D  1  20 62 0E             JSR TPLOAD
+001540  1               ;1540:A9 00 1258
+001540  1  A9 00                LDA #0
+001542  1               ;1542:80 41 OD 1259
+001542  1  8D 41 0D             STA POSFL
+001545  1               ;1545:60 1260
+001545  1  60                   RTS
+001546  1               
+001546  1               ;1546:AD 4C 12 1262
+001546  1               CHKCPLX:
+001546  1  AD 4C 12             LDA P123B       ;1ST CON.
+001549  1               ;1549:85 EE 1263
+001549  1  85 EE                STA PATLOC
+00154B  1               ;154B:AD 4B 12 1264
+00154B  1  AD 4B 12             LDA P123A       ;2ND CON.
+00154E  1               ;154E:C9 6A 1265
+00154E  1  C9 6A                CMP #$6A        ;CHECK 2ND IF W
+001550  1               ;1550:00 02 1266
+001550  1  D0 02                BNE NOCOS
+001552  1               ;1552:C6 EE 1267
+001552  1  C6 EE                DEC PATLOC
+001554  1               ;1554:18 1268
+001554  1               NOCOS:
+001554  1  18                   CLC
+001555  1               ;1555:65 EE 1269
+001555  1  65 EE                ADC PATLOC
+001557  1               ;1557:38 1270
+001557  1  38                   SEC
+001558  1               ;1558:E9 CO 1271
+001558  1  E9 C0                SBC #$C0
+00155A  1               ;155A:AA 1272
+00155A  1  AA                   TAX
+00155B  1               ;155B:C9 14 1273
+00155B  1  C9 14                CMP #$14        ;FILTERING!
+00155D  1               ;155D:BO 07 1274
+00155D  1  B0 07                BCS NOCOMB
+00155F  1               ;155F:BD 1B 13 1275
+00155F  1  BD 1B 13             LDA CPLXCN,X
+001562  1               ;1562:09 00 1276
+001562  1  C9 00                CMP #0          ;IF 0,CANNOT BE COMBINED!
+001564  1               ;1564:DO 04 1277
+001564  1  D0 04                BNE GOCPLX
+001566  1               ;1566:20 DD FB 1278
+001566  1               NOCOMB:
+001566  1  20 DD FB             JSR BEEP
+001569  1               ;1569:60 1279
+001569  1  60                   RTS
+00156A  1               
+00156A  1               ;156A:4C 63 14 1281
+00156A  1               GOCPLX:
+00156A  1  4C 63 14             JMP WASIN3
+00156D  1               
+00156D  1               ;156D:A5 24 1283
+00156D  1               SFTFB1:
+00156D  1  A5 24                LDA CH
+00156F  1               ;156F:C9 25 1284
+00156F  1  C9 25                CMP #$25
+001571  1               ;1571:10 05 1285
+001571  1  10 05                BPL NO9
+001573  1               ;1573:E6 24 1286
+001573  1  E6 24                INC CH
+001575  1               ;1575:4C 7B 15 1287
+001575  1  4C 7B 15             JMP SFTBFA
+001578  1               ;1578:20 D6 0E 1288
+001578  1               NO9:
+001578  1  20 D6 0E             JSR ASCROL
+00157B  1               
+00157B  1               ;157B: 1290 ************************************
+00157B  1               ;157B: 1291 *
+00157B  1               ;157B: 1292 * CONDITION BUFFER ADJUST:
+00157B  1               ;157B: 1293 * (9)<-(A)<-(D)<-(E)
+00157B  1               ;157B: 1294 * (B)<-(C)<-(F)<-(0)
+00157B  1               ;157B: 1295 *
+00157B  1               ;1578: 1296 ********************************
+00157B  1               
+00157B  1               ;157B:AD 4B 12 1298
+00157B  1               SFTBFA:
+00157B  1  AD 4B 12             LDA P123A
+00157E  1               ;157E:8D 4A 12 1299
+00157E  1  8D 4A 12             STA P1239
+001581  1               ;1581:AD 4D 12 1300
+001581  1  AD 4D 12             LDA P123C
+001584  1               ;1584:80 4C 12 1301
+001584  1  8D 4C 12             STA P123B
+001587  1               ;1587:AD 4E 12 1302
+001587  1  AD 4E 12             LDA P123D
+00158A  1               ;158A:80 4B 12 1303
+00158A  1  8D 4B 12             STA P123A
+00158D  1               ;158D:AD 50 12 1304
+00158D  1  AD 50 12             LDA P123F
+001590  1               ;1590:8D 4D 12 1305
+001590  1  8D 4D 12             STA P123C
+001593  1               ;1593:AD 4F 12 1306
+001593  1  AD 4F 12             LDA P123E
+001596  1               
+001596  1               ;1596:80 4E 12 1307
+001596  1  8D 4E 12             STA P123D
+001599  1               ;1599:AD 51 12 1308
+001599  1  AD 51 12             LDA P1240
+00159C  1               ;159C:8D 50 12 1309
+00159C  1  8D 50 12             STA P123F
+00159F  1               ;159F:A9 00 1310
+00159F  1  A9 00                LDA #0
+0015A1  1               ;15A1:8D 50 12 1311
+0015A1  1  8D 50 12             STA P123F
+0015A4  1               ;15A4:80 51 12 1312
+0015A4  1  8D 51 12             STA P1240
+0015A7  1               ;15A7:20 22 FC 1313
+0015A7  1  20 22 FC             JSR VTAB
+0015AA  1               ;15AA:60 1314
+0015AA  1  60                   RTS
+0015AB  1               
+0015AB  1               ;15AB:A5 24 1316
+0015AB  1               SFTFB2:
+0015AB  1  A5 24                LDA CH
+0015AD  1               ;15AD:C9 24 1317
+0015AD  1  C9 24                CMP #$24
+0015AF  1               ;15AF : 10 07 1318
+0015AF  1  10 07                BPL NO10
+0015B1  1               ;15B1:E6 24 1319
+0015B1  1  E6 24                INC CH
+0015B3  1               ;15B3:E6 24 1320
+0015B3  1  E6 24                INC CH
+0015B5  1               ;15B5:4C BB 15 1321
+0015B5  1  4C BB 15             JMP SFTBFB
+0015B8  1               ;15B8:20 D6 0E 1322
+0015B8  1               NO10:
+0015B8  1  20 D6 0E             JSR ASCROL
+0015BB  1               
+0015BB  1               ;15BB: 1324 ***********************************
+0015BB  1               ;15BB: 1325 *
+0015BB  1               ;15BB: 1326 * CONDITION BUFFER ADJUST1:
+0015BB  1               ;15BB: 1327 * (9)<-(D)<-0, (A)<-(E)<-0
+0015BB  1               ;15BB: 1328 * (B)<-(F)<-0,(C)<-(0)<-0
+0015BB  1               ;15BB: 1329 *
+0015BB  1               ;15BB: 1330 *********************************
+0015BB  1               
+0015BB  1               ;15BB:AD 4E 12 1332
+0015BB  1               SFTBFB:
+0015BB  1  AD 4E 12             LDA P123D
+0015BE  1               ;15BE:8D 4A 12 1333
+0015BE  1  8D 4A 12             STA P1239
+0015C1  1               ;15C1:AD 50 12 1334
+0015C1  1  AD 50 12             LDA P123F
+0015C4  1               ;15C4:8D 4C 12 1335
+0015C4  1  8D 4C 12             STA P123B
+0015C7  1               ;15C7:AD 4F 12 1336
+0015C7  1  AD 4F 12             LDA P123E
+0015CA  1               ;15CA:8D 4B 12 1337
+0015CA  1  8D 4B 12             STA P123A
+0015CD  1               ;15CD:AD 51 12 1338
+0015CD  1  AD 51 12             LDA P1240
+0015D0  1               ;1500:80 4D 12 1339
+0015D0  1  8D 4D 12             STA P123C
+0015D3  1               ;15D3:A9 00 1340
+0015D3  1  A9 00                LDA #0
+0015D5  1               ;1505:80 4E 12 1341
+0015D5  1  8D 4E 12             STA P123D
+0015D8  1               ;15D8:8D 4F 12 1342
+0015D8  1  8D 4F 12             STA P123E
+0015DB  1               ;15DB:8D 50 12 1343
+0015DB  1  8D 50 12             STA P123F
+0015DE  1               ;15DE:8D 51 12 1344
+0015DE  1  8D 51 12             STA P1240
+0015E1  1               ;15E1:20 22 FC 1345
+0015E1  1  20 22 FC             JSR VTAB
+0015E4  1               ;15E4:60 1346
+0015E4  1  60                   RTS
+0015E5  1               
+0015E5  1               ;15E5:20 AB 15 1348
+0015E5  1               ESFTFB3:
+0015E5  1  20 AB 15             JSR SFTFB2
+0015E8  1               ;15E8:20 6D 15 1349
+0015E8  1               ESFTFB1:
+0015E8  1  20 6D 15             JSR SFTFB1
+0015EB  1               ;15EB:4C F4 15 1350
+0015EB  1  4C F4 15             JMP ECONDCLR
+0015EE  1               ;15EE:20 AB 15 1352
+0015EE  1  20 AB 15             JSR SFTFB2
+0015F1  1               ;15F1:20 AB 15 1353
+0015F1  1               ECONDCL1:
+0015F1  1  20 AB 15             JSR SFTFB2
+0015F4  1               
+0015F4  1               ;15F4: 1355 ********************************
+0015F4  1               ;15F4: 1356 *
+0015F4  1               ;15F4: 1357 * CLEAR ALL OF CONDITION BUFFER
+0015F4  1               ;15F4: 1358 *
+0015F4  1               ;15F4: 1359 ;*******************************
+0015F4  1               
+0015F4  1               ;15F4:20 DD FB 1361
+0015F4  1               ECONDCLR:
+0015F4  1  20 DD FB             JSR BEEP
+0015F7  1               ;15F7:A9 00 1362
+0015F7  1  A9 00                LDA #0
+0015F9  1               ;15F9:8D 4A 12 1363
+0015F9  1  8D 4A 12             STA P1239
+0015FC  1               ;15FC:8D 4B 12 1364
+0015FC  1  8D 4B 12             STA P123A
+0015FF  1               ;15FF:8D 4C 12 1365
+0015FF  1  8D 4C 12             STA P123B
+001602  1               ;1602:8D 4D 12 1366
+001602  1  8D 4D 12             STA P123C
+001605  1               ;1605:8D 4E 12 1367
+001605  1  8D 4E 12             STA P123D
+001608  1               ;1608:8D 4F 12 1368
+001608  1  8D 4F 12             STA P123E
+00160B  1               ;160B:8D 50 12 1369
+00160B  1  8D 50 12             STA P123F
+00160E  1               ;160E:8D 51 12 1370
+00160E  1  8D 51 12             STA P1240
+001611  1               ;1611:4C 4A 14 1371
+001611  1  4C 4A 14             JMP CONTPRO
+001614  1               ;1614:2C C3 08 1372
+001614  1               KPEENG:
+001614  1  2C C3 08             BIT SNDFLG
+001617  1               ;1617:10 14 1373
+001617  1  10 14                BPL NSOUND
+001619  1               ;1619:48 1374
+001619  1  48                   PHA
+00161A  1               ;161A:A9 10 1375
+00161A  1  A9 10                LDA #$10
+00161C  1               ;161C:20 A8 FC 1376
+00161C  1  20 A8 FC             JSR MWAIT
+00161F  1               ;161F:A0 CO 1377
+00161F  1  A0 C0                LDY #$C0
+001621  1               ;1621:A9 08 1378
+001621  1               KPEE1:
+001621  1  A9 08                LDA #8
+001623  1               ;1623:20 AB FC 1379
+001623  1  20 A8 FC             JSR MWAIT
+001626  1               
+001626  1               ;1626:AD 30 CO 1380
+001626  1  AD 30 C0             LDA SPEAKER
+001629  1               ;1629:88 1381
+001629  1  88                   DEY
+00162A  1               ;162A: DO F5 1382
+00162A  1  D0 F5                BNE KPEE1
+00162C  1               ;162C:68 1383
+00162C  1  68                   PLA
+00162D  1               ;162D:60 1384
+00162D  1               NSOUND:
+00162D  1  60                   RTS
+00162E  1               
+00162E  1               ;162E:A9 80 1386
+00162E  1               CTRLT:
+00162E  1  A9 80                LDA #$80        ;TOGGLE SOUND
+001630  1               ;1630:4D C3 08 1387
+001630  1  4D C3 08             EOR SNDFLG
+001633  1               ;1633:8D C3 08 1388
+001633  1  8D C3 08             STA SNDFLG
+001636  1               ;1636:60 1389
+001636  1  60                   RTS
+001637  1               
+001637  1               ;*** SUCCESSFUL ASSEMBLY: NO ERRORS
+001637  1               
