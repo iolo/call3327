@@ -11,12 +11,12 @@ const chars =  data.length / BYTES_PER_GLYPH;
 // Initialize BDF file content with font metadata
 let bdfContent = `
 STARTFONT 2.1
-FONT -misc-fixed-medium-r-normal--16-120-75-75-c-70-iso10646-1
-SIZE 16 75 75
-FONTBOUNDINGBOX 16 16 0 -2
+FONT -misc-call3327-medium-r-normal--8-80-96-96-c-80-iso10646-1
+SIZE 8 96 96
+FONTBOUNDINGBOX 7 8 0 0
 STARTPROPERTIES 2
-FONT_ASCENT 14
-FONT_DESCENT 2
+FONT_ASCENT 8
+FONT_DESCENT 0
 ENDPROPERTIES
 CHARS ${chars}
 `;
@@ -38,9 +38,9 @@ for (let i = 0; i < data.length; i += BYTES_PER_GLYPH) {
   bdfContent += `
 STARTCHAR U+${encoding.toString(16).padStart(4, '0')}
 ENCODING ${encoding}
-SWIDTH 500 0
-DWIDTH 8 0
-BBX 8 8 0 0
+SWIDTH 1000 0
+DWIDTH 7 0
+BBX 7 8 0 0
 BITMAP
 ${bitmaps.join('\n')}
 ENDCHAR
