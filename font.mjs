@@ -6,12 +6,12 @@ export function parseRawFont({ data, width = 8, height = 8 }) {
   const bytesPerRow = Math.floor((width + 8 - 1) / 8);
   const bytesPerGlyph = bytesPerRow * height;
   const glyphs = [];
-  for (let i = 0; i < data.length; i += bytesPerGlyph) {
+  for (let i = 0, code = 0; i < data.length; i += bytesPerGlyph, code += 1) {
     const bitmap = [];
     for (let y = 0; y < height; y += 1) {
       const bits = [];
       for (let x = 0; x < width; x += 1) {
-        const byteIndex = i + Math.floor(x / 8) + y * bytesPerRow;
+        const byteIndex = i + y * bytesPerRow + Math.floor(x / 8);
         const bitIndex = 7 - (x % 8);
         const byte = data[byteIndex];
         const bit = (byte >> (7 - bitIndex)) & 1;
@@ -19,7 +19,7 @@ export function parseRawFont({ data, width = 8, height = 8 }) {
       }
       bitmap.push(bits);
     }
-    glyphs.push({ width, height, bitmap });
+    glyphs.push({ code, width, height, bitmap });
   }
   return { width, height, bytesPerRow, bytesPerGlyph, glyphs };
 }
@@ -106,11 +106,11 @@ export const JAMO = {
   A2: 1, // ㅏ
   AE2: 2, // ㅐ
   YA2: 3, // ㅑ
-  YE2: 4, // ㅒ
+  YAE2: 4, // ㅒ
   EO2: 5, // ㅓ
   E2: 6, // ㅔ
   YEO2: 7, // ㅕ
-  YAEO2: 8, // ㅖ
+  YE2: 8, // ㅖ
   O2: 9, // ㅗ
   YO2: 0xa, // ㅛ
   U2: 0xb, // ㅜ
@@ -155,7 +155,7 @@ export const JAMO = {
   EO: 0x75, // ㅓ
   E: 0x76, // ㅔ
   YEO: 0x77, // ㅕ
-  YAEO: 0x78, // ㅖ
+  YE: 0x78, // ㅖ
   O: 0x79, // ㅗ
   YO: 0x7a, // ㅛ
   U: 0x7b, // ㅜ
@@ -164,19 +164,13 @@ export const JAMO = {
   YI: 0x7e, // ㅣ
 };
 
-/*
-- 초성 1벌: 좌표 0,0
-- 중성 2벌
-  - 종성 없음: 가로모음은 초성 아래에. 세로모음은 초성 옆에. 세로모음 연장. ex 가, 고, 과
-  - 종성 있음: 가로모음은 초성과 겹칩. 세로모음은 초성 옆에. ex 곡, 곽, 곿
-- 종성 2벌
-  - 세로모음 없음: 한칸짜리 복자음 종성 사용. ex. 곡, 곣
-  - 세로모음 있음: 두칸짜리 복자음 종성 사용. ex. 각, 갃, 곿
-*/
-
 // 초성
 // 유니코드 한글 자모 코드 -> 글꼴 인덱스
 // U+1100~U+1112
+const CHOSEONG_BEGIN = 0x1100;
+const CHOSEONG_END = 0x1112;
+const CHOSEONG_COUNT = CHOSEONG_END - CHOSEONG_BEGIN + 1; // 19
+
 // 0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19
 // NA ㄱ ㄲ ㄴ ㄷ ㄸ ㄹ ㅁ ㅂ ㅃ ㅅ ㅆ ㅇ ㅈ ㅉ ㅊ ㅋ ㅌ ㅍ ㅎ
 export const CHOSEONG = [
@@ -201,94 +195,105 @@ export const CHOSEONG = [
   JAMO.H,
 ];
 
-const CHOSEONG_BEGIN = 0x1100;
-const CHOSEONG_END = 0x1112;
-const CHOSEONG_COUNT = CHOSEONG_END - CHOSEONG_BEGIN + 1; // 19
-
-function generateChoseongGlyphs() {
-  const outputGlyphs = [];
-  for (let i = 0; i < CHOSEONG_COUNT; i += 1) {
-    const code = CHOSEONG_BEGIN + i;
-    const bitmap = inputGlyphs[CHOSUNG[i]];
-    console.log(`${i}:${code.toString(16)}:[${String.fromCharCode(code)}]`);
-    glyphs.push(generateBdfChar({ encoding, swidth: [1000, 0], dwidth: [7, 0], bbx: [7, 8, 0, 0], bitmap }));
+export function generateChoseongGlyphs(font) {
+  console.log('generate choseong glyphs...');
+  const glyphs = [];
+  for (let cho = 0; cho < CHOSEONG_COUNT; cho += 1) {
+    const code = CHOSEONG_BEGIN + cho;
+    console.log(`${cho}:${code.toString(16)}:[${String.fromCharCode(code)}]`);
+    const bitmap = font.glyphs[CHOSEONG[cho]].bitmap;
+    glyphs.push({ code, width: 7, height: 8, bitmap });
   }
-  return outputGlyphs;
+  return glyphs;
 }
 
 // 중성
 // 유니코드 한글 자모 코드 -> 글꼴 인덱스
 // U+1161~U+1175
-// 0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21
-// NA ㅏ ㅐ ㅑ ㅒ ㅓ ㅔ ㅕ ㅖ ㅗ ㅛ ㅜ ㅠ ㅡ ㅣ ㅘ ㅙ ㅚ ㅝ ㅞ ㅟ ㅢ
-export const JUNGSEONG = [
-  // 종성이 있는 경우
-  // 가로모음은 초성과 겹침
-  JAMO.A,
-  JAMO.AE,
-  JAMO.YA,
-  JAMO.YE,
-  JAMO.EO,
-  JAMO.E,
-  JAMO.YEO,
-  JAMO.YAE,
-  JAMO.O2,
-  JAMO.YO2,
-  JAMO.U2,
-  JAMO.YU2,
-  JAMO.EU2,
-  JAMO.YI2,
-  // 복모음
-  [JAMO.O2, JAMO.A],
-  [JAMO.O2, JAMO.AE],
-  [JAMO.O2, JAMO.YI],
-  [JAMO.U2, JAMO.EO],
-  [JAMO.U2, JAMO.E],
-  [JAMO.U2, JAMO.YI],
-  [JAMO.EU2, JAMO.YI],
-];
-
-// 종성이 없는 경우
-// 세로모음은 연장 글꼴 사용
-const JUNGSEONG_2 = [
-  [JAMO.A, JAMO.A2],
-  [JAMO.AE, JAMO.AE2],
-  [JAMO.YA, JAMO.YA2],
-  [JAMO.YE, JAMO.YE2],
-  [JAMO.EO, JAMO.EO2],
-  [JAMO.E, JAMO.E2],
-  [JAMO.YEO, JAMO.YEO2],
-  [JAMO.YAE, JAMO.YAE2],
-  [JAMO.O],
-  [JAMO.YO],
-  [JAMO.U],
-  [JAMO.YU],
-  // 복모음
-  [JAMO.O, JAMO.A, JAMO.A2],
-  [JAMO.O, JAMO.AE, JAMO.AE2],
-  [JAMO.O, JAMO.YI, JAMO.YI2],
-  [JAMO.U, JAMO.EO, JAMO.EO2],
-  [JAMO.U, JAMO.E, JAMO.EO],
-  [JAMO.U, JAMO.YI, JAMO.YI2],
-  [JAMO.EU, JAMO.YI, JAMO.YI2],
-];
-
 const JUNGSEONG_BEGIN = 0x1161;
 const JUNGSEONG_END = 0x1175;
 const JUNGSEONG_COUNT = JUNGSEONG_END - JUNGSEONG_BEGIN + 1; // 21
 
-function generateJungseongGlyphs() {
-  for (let i = 0; i < JUNGSEONG_COUNT; i += 1) {
-    const code = JUNGSEONG_BEGIN + i;
-    console.log(`${i}:${code.toString(16)}:[${String.fromCharCode(code)}]`);
+// 0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20
+// ㅏ ㅐ ㅑ ㅒ ㅓ ㅔ ㅕ ㅖ ㅗ ㅘ ㅙ ㅚ ㅛ ㅜ ㅝ ㅞ ㅟ ㅠ ㅡ ㅢ ㅣ
+
+function isVerticalVowel(jung) {
+  return jung <= 7 && jung == 20;
+}
+
+function isHorizontalVowel(jung) {
+  return jung == 8 || jung == 12 || jung == 13 || jung == 17 || jung == 18;
+}
+
+function isCompoundVowel(jung) {
+  return jung == 9 || jung == 10 || jung == 11 || jung == 14 || jung == 15 || jung == 16 || jung == 19;
+}
+
+// 세로모음: 0=종성있는 글자용 세로모음, 1=종성없는 글자용 연장 세로모음
+// 가로모음: 0=종성없는 글자용 가로모음, 1=종성있는 글자용 가로모음
+// 복모음: 0=종성없는 글자용 가로모음, 1=종성있는 글자용 세로모음, 2=종성있는글자용 가로모음, 3=종성없는 글자용 연장 세로모음
+export const JUNGSEONG = [
+  [JAMO.A, JAMO.A2],
+  [JAMO.AE, JAMO.AE2],
+  [JAMO.YA, JAMO.YA2],
+  [JAMO.YAE, JAMO.YAE2],
+  [JAMO.EO, JAMO.EO2],
+  [JAMO.E, JAMO.E2],
+  [JAMO.YEO, JAMO.YEO2],
+  [JAMO.YE, JAMO.YE2],
+  [JAMO.O, JAMO.O2],
+  [JAMO.O, JAMO.A, JAMO.O2, JAMO.A2],
+  [JAMO.O, JAMO.AE, JAMO.O2, JAMO.AE2],
+  [JAMO.O, JAMO.YI, JAMO.O2, JAMO.YI2],
+  [JAMO.YO, JAMO.YO2],
+  [JAMO.U, JAMO.U2],
+  [JAMO.U, JAMO.EO, JAMO.U2, JAMO.EO2],
+  [JAMO.U, JAMO.E, JAMO.U2, JAMO.EO],
+  [JAMO.U, JAMO.YI, JAMO.U2, JAMO.YI2],
+  [JAMO.YU, JAMO.YU2],
+  [JAMO.EU, JAMO.EU2],
+  [JAMO.EU, JAMO.YI, JAMO.EU2, JAMO.YI2],
+  [JAMO.YI, JAMO.YI2],
+];
+
+export function generateJungseongGlyphs(font) {
+  console.log('generate jungseong glyphs...');
+  const glyphs = [];
+  for (let jung = 0; jung < JUNGSEONG_COUNT; jung += 1) {
+    const code = JUNGSEONG_BEGIN + jung;
+    console.log(`${jung}:${code.toString(16)}:[${String.fromCharCode(code)}]`);
+    const glyphSet = JUNGSEONG[jung];
+    let glyph;
+    if (isCompoundVowel(jung)) {
+      // 복모음: 종성있는 글자용 가로모음 + 종성있는 글자용 세로모음
+      const bitmap = [];
+      for (let y = 0; y < 8; y += 1) {
+        bitmap[y] = [];
+        for (let x = 0; x < 7; x += 1) {
+          bitmap[y].push(font.glyphs[glyphSet[2]].bitmap[y][x] | font.glyphs[glyphSet[1]].bitmap[y][x]);
+        }
+      }
+      glyph = { code, width: 14, height: 8, bitmap };
+    } else {
+      console.log(glyphSet);
+      // 단모음: 종성있는 글자용 세로모음 or 종성없는 글자용 가로모음
+      const bitmap = font.glyphs[glyphSet[0]].bitmap;
+      glyph = { code, width: 7, height: 8, bitmap };
+    }
+    glyphs.push(glyph);
   }
+  return glyphs;
 }
 
 // 종성
 // 유니코드 한글 자모 코드 -> 글꼴 인덱스
 // U+11A8~U+11C2
-// 0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27
-// NA ㄱ ㄲ ㄳ ㄴ ㄵ ㄶ ㄷ ㄹ ㄺ ㄻ ㄼ ㄽ ㄾ ㄿ ㅀ ㅁ ㅂ ㅄ ㅅ ㅆ ㅇ ㅈ ㅊ ㅋ ㅌ ㅍ ㅎ
+const JONGSEONG_BEGIN = 0x11a8;
+const JONGSEONG_END = 0x11c2;
+const JONGSEONG_COUNT = JONGSEONG_END - JONGSEONG_BEGIN + 1; // 27
+
+// 0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
+// ㄱ ㄲ ㄳ ㄴ ㄵ ㄶ ㄷ ㄹ ㄺ ㄻ ㄼ ㄽ ㄾ ㄿ ㅀ ㅁ ㅂ ㅄ ㅅ ㅆ ㅇ ㅈ ㅊ ㅋ ㅌ ㅍ ㅎ
 const JONGSEONG = [
   // 세로모음 없음
   // 한칸짜리 종성 사용
@@ -352,14 +357,12 @@ const JONGSEONG_2 = [
   JAMO.H,
 ];
 
-const JONGSEONG_BEGIN = 0x11a8;
-const JONGSEONG_END = 0x11c2;
-const JONGSEONG_COUNT = JONGSEONG_END - JONGSEONG_BEGIN + 1; // 27
+export function generateJongseongGlyphs() {
+  console.log('generate jongseong glyphs...');
 
-function generateJongseongGlyphs() {
-  for (let i = 0; i < JONGSEONG_COUNT; i += 1) {
-    const code = JONGSEONG_BEGIN + i;
-    console.log(`${i}:${code.toString(16)}:[${String.fromCharCode(code)}]`);
+  for (let jong = 0; jong < JONGSEONG_COUNT; jong += 1) {
+    const code = JONGSEONG_BEGIN + jong;
+    console.log(`${jong}:${code.toString(16)}:[${String.fromCharCode(code)}]`);
   }
 }
 
@@ -368,7 +371,7 @@ const SYLLABLE_END = 0xd7a3;
 // 11172 = 19 * 21 * (27 + 1)
 const SYLLABLE_COUNT = CHOSEONG_COUNT * JUNGSEONG_COUNT * (JONGSEONG_COUNT + 1);
 
-function generateSyllableGlyphs() {
+export function generateSyllableGlyphs() {
   for (let cho = 0; cho < CHOSEONG_COUNT; cho += 1) {
     for (let jung = 0; jung < JUNGSEONG_COUNT; jung += 1) {
       generateSyllableGlyph(cho, jung, -1);
@@ -382,7 +385,10 @@ function generateSyllableGlyphs() {
 function generateSyllableGlyph(cho, jung, jong) {
   const code =
     SYLLABLE_BEGIN + cho * JUNGSEONG_COUNT * (JONGSEONG_COUNT + 1) + jung * (JONGSEONG_COUNT + 1) + (jong + 1);
-  const buf = [];
+  const bitmap = [];
+  if (isVerticalVowel(jung)) {
+  }
+  // 14x16 or 7x16
   buf.push(code.toString(16));
   buf.push('[' + String.fromCharCode(code) + ']');
   buf.push('[' + String.fromCharCode(CHOSEONG_BEGIN + cho) + ']');

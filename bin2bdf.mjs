@@ -1,18 +1,24 @@
 import fs from 'node:fs';
-import { parseRawFont, generateBdfChar, generateBdfFont } from './font.mjs';
+import {
+  parseRawFont,
+  generateBdfChar,
+  generateBdfFont,
+  generateChoseongGlyphs,
+  generateJungseongGlyphs,
+} from './font.mjs';
 
 const binFile = process.argv[2] || 'font.bin';
 const bdfFile = process.argv[3] || 'font.bdf';
 
 const data = fs.readFileSync(binFile);
-const rawFont = parseRawFont({ data, width: 8, height: 8 });
+const font = parseRawFont({ data, width: 8, height: 8 });
 
-const chars = rawFont.glyphs.map((glyph, i) => {
+const chars = font.glyphs.concat(generateChoseongGlyphs(font), generateJungseongGlyphs(font)).map((glyph) => {
   return generateBdfChar(glyph, {
-    encoding: i,
+    encoding: glyph.code,
     swidth: [1000, 0],
-    dwidth: [7, 0],
-    bbx: [7, 8, 0, 0],
+    dwidth: [glyph.width, 0],
+    bbx: [glyph.width, glyph.height, 0, 0],
   });
 });
 
