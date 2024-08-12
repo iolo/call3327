@@ -33,11 +33,11 @@ fs.writeFileSync(
     family: 'CALL3327_2',
     pixelSize: 32,
     pointSize: 320,
-    averageWidth: 280,
+    averageWidth: 140,
     size: [32, 75, 75],
-    fontBoundingBox: [28, 32, 0, 0],
-    fontAscent: 30,
-    fontDescent: 2,
-    chars: glyphs.map(generateBdfChar),
+    fontBoundingBox: [14, 32, 0, 0],
+    fontAscent: 32,
+    fontDescent: 0,
+    chars: glyphs.map((glyph) => generateBdfChar(glyph, { swidth: [glyph.width > 14 ? 1000 : 500] })),
   })
 );

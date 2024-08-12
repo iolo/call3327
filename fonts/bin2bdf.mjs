@@ -15,11 +15,11 @@ fs.writeFileSync(
   generateBdfFont({
     pixelSize: 16,
     pointSize: 160,
-    averageWidth: 140,
+    averageWidth: 70,
     size: [16, 75, 75],
-    fontBoundingBox: [14, 16, 0, 0],
-    fontAscent: 15,
-    fontDescent: 1,
-    chars: glyphs.map(generateBdfChar),
+    fontBoundingBox: [7, 16, 0, 0],
+    fontAscent: 16,
+    fontDescent: 0,
+    chars: glyphs.map((glyph) => generateBdfChar(glyph, { swidth: [glyph.width > 7 ? 1000 : 500] })),
   })
 );

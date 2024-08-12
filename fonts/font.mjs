@@ -134,7 +134,7 @@ export function generateBdfChar(glyph, { encoding, swidth, dwidth, bbx }) {
     .join('\n');
   return `STARTCHAR U+${(encoding ?? glyph.code).toString(16).padStart(4, '0')}
 ENCODING ${encoding ?? glyph.code}
-SWIDTH ${(swidth ?? [glyph.width > 8 ? 1000 : 500, 0]).join(' ')}
+SWIDTH ${(swidth ?? [1000, 0]).join(' ')}
 DWIDTH ${(dwidth ?? [glyph.width, 0]).join(' ')}
 BBX ${(bbx ?? [glyph.width, glyph.height, 0, 0]).join(' ')}
 BITMAP
