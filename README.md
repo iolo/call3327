@@ -27,7 +27,7 @@ The very first Korean(Hangul) Input/Output Program for Old 8-bit Apple II series
 - 맥OS용 에뮬레이터 [Virtual \]\[](https://github.com/AppleWin/AppleWin)(상업용)
 - 리눅스용 에뮬레이터 [LinApple](https://github.com/linappleii/linapple)
 
-### 실행 
+### 실행
 
 1. 디스켓 또는 디스크 이미지로 부팅
 2. 부팅 후 `BRUN CALL3327` 명령어로 한글 입력/출력 프로그램 로드 & 실행
@@ -62,7 +62,7 @@ The very first Korean(Hangul) Input/Output Program for Old 8-bit Apple II series
 - TBW ...
 
 ### 글꼴 조합 규칙
- 
+
 |중성\종성| 없음 |단자음/쌍자음|복자음| 너비 | 높이 |
 |---------|------|-------------|------|------|------|
 | 세로모음|  가  |   각 / 갂   |  갃  | 14px | 16px |
@@ -98,7 +98,7 @@ The very first Korean(Hangul) Input/Output Program for Old 8-bit Apple II series
 * ex. 곡, 꼭, 곣
 ```
 [고]  [고]  [고]
-[ㄱ]  [ㄲ]  [ㄳ] 
+[ㄱ]  [ㄲ]  [ㄳ]
 ```
 
 ##### 중성 세로 모음 + 종성 단자음 or 쌍자음
@@ -133,6 +133,12 @@ The very first Korean(Hangul) Input/Output Program for Old 8-bit Apple II series
 [ㄱ][ㅏ]  [고][ㅏ]
 [ㄱ][ㅅ]  [ㄱ][ㅅ]
 ```
+
+### 인코딩
+
+- [CALL3327 N바이트 인코딩](docs/call3327-nbyte-encoding.md)
+- ![CALL3327 키보드 레이아웃](docs/call3327-keyboard-layout.png)
+- ![CALL3327 캐릭터 코드](docs/call3327-character-code.jpg)
 
 ---
 May the **SOURCE** be with you...
